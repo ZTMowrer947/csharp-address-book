@@ -1,4 +1,6 @@
-﻿namespace AddressBook.Models
+﻿using AddressBook.Models.Enums;
+
+namespace AddressBook.Models
 {
 	/// <summary>
 	/// Class representing a contact's address field.
@@ -6,16 +8,16 @@
 	public sealed class Address
 	{
 		// Properties
-		public string Type { get; private set; }
+		public AddressType TypeOfAddress { get; private set; }
 		public string StreetAddress { get; private set; }
 		public string City { get; private set; }
 		public string State { get; private set; }
 		public string PostalCode { get; private set; }
 
 		// Constructor
-		public Address(string type, string streetAddress, string city, string state, string postalCode)
+		public Address(AddressType typeOfAddress, string streetAddress, string city, string state, string postalCode)
 		{
-			Type = type;
+			TypeOfAddress = typeOfAddress;
 			StreetAddress = streetAddress;
 			City = city;
 			State = state;
@@ -29,8 +31,27 @@
 		// Overrides
 		public override string ToString()
 		{
+			string typeOfAddressString = "";
+
+			switch (TypeOfAddress) {
+				case AddressType.Home: {
+						typeOfAddressString = "Home";
+						break;
+				}
+
+				case AddressType.Work: {
+						typeOfAddressString = "Work";
+						break;
+				}
+
+				case AddressType.Other: {
+						typeOfAddressString = "Other";
+						break;
+				}
+			}
+
 			string formatString = string.Format("{0}: {1}, {2}, {3} {4}",
-				Type,
+				typeOfAddressString,
 				StreetAddress,
 				City,
 				State,
@@ -43,7 +64,8 @@
 		public override int GetHashCode()
 		{
 			int hash = 0;
-			if (Type != null) hash += Type.GetHashCode();
+			
+			hash += TypeOfAddress.GetHashCode();
 			if (StreetAddress != null) hash += StreetAddress.GetHashCode();
 			if (City != null) hash += City.GetHashCode();
 			if (State != null) hash += State.GetHashCode();
@@ -60,7 +82,7 @@
 				Address that = (Address)obj;
 
 				return (
-					Type == that.Type &&
+					TypeOfAddress == that.TypeOfAddress &&
 					StreetAddress == that.StreetAddress &&
 					City == that.City &&
 					State == that.State &&
