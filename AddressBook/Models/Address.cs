@@ -31,27 +31,25 @@ namespace AddressBook.Models
 		// Overrides
 		public override string ToString()
 		{
-			string typeOfAddressString = "";
+			string typeOfAddressAsString = "";
 
-			switch (TypeOfAddress) {
-				case AddressType.Home: {
-						typeOfAddressString = "Home";
-						break;
-				}
+			switch (TypeOfAddress)
+			{
+				case AddressType.Home:
+					typeOfAddressAsString = "Home";
+					break;
 
-				case AddressType.Work: {
-						typeOfAddressString = "Work";
-						break;
-				}
+				case AddressType.Work:
+					typeOfAddressAsString = "Work";
+					break;
 
-				case AddressType.Other: {
-						typeOfAddressString = "Other";
-						break;
-				}
+				case AddressType.Other:
+					typeOfAddressAsString = "Other";
+					break;
 			}
 
 			string formatString = string.Format("{0}: {1}, {2}, {3} {4}",
-				typeOfAddressString,
+				typeOfAddressAsString,
 				StreetAddress,
 				City,
 				State,
@@ -63,9 +61,8 @@ namespace AddressBook.Models
 
 		public override int GetHashCode()
 		{
-			int hash = 0;
-			
-			hash += TypeOfAddress.GetHashCode();
+			int hash = TypeOfAddress.GetHashCode();
+
 			if (StreetAddress != null) hash += StreetAddress.GetHashCode();
 			if (City != null) hash += City.GetHashCode();
 			if (State != null) hash += State.GetHashCode();
