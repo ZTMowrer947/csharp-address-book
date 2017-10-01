@@ -50,7 +50,7 @@ namespace AddressBook.Tests.Models
 		}
 
 		[Test()]
-		public void EqualsTest()
+		public void EqualityTest()
 		{
 			Assert.AreEqual(testAddress, sameTestAddress);
 			Assert.AreNotSame(testAddress, sameTestAddress);
