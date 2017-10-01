@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using NUnit.Framework;
 using AddressBook.Models;
+using AddressBook.Models.Enums;
 
 namespace AddressBook.Tests.Models
 {
@@ -14,16 +14,16 @@ namespace AddressBook.Tests.Models
 
 		[OneTimeSetUp()]
 		public void SetUp() {
-			string type = "Home";
-			string differentType = "Work";
+			AddressType typeOfAddress = AddressType.Home;
+			AddressType differentTypeOfAddress = AddressType.Work;
 			string streetAddress = "123 Example Road";
 			string city = "Portland";
 			string state = "OR";
 			string postalCode = "12345";
 
-			testAddress = new Address(type, streetAddress, city, state, postalCode);
-			sameTestAddress = new Address(type, streetAddress, city, state, postalCode);
-			differentTestAddress = new Address(differentType, streetAddress, city, state, postalCode);
+			testAddress = new Address(typeOfAddress, streetAddress, city, state, postalCode);
+			sameTestAddress = new Address(typeOfAddress, streetAddress, city, state, postalCode);
+			differentTestAddress = new Address(differentTypeOfAddress, streetAddress, city, state, postalCode);
 		}
 
 		[Test()]
