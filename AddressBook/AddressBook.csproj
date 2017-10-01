@@ -52,7 +52,6 @@
     <Compile Include="Models\EmailAddress.cs" />
     <Compile Include="Models\Enums\AddressType.cs" />
     <Compile Include="Models\Enums\EmailAddressType.cs" />
-    <Compile Include="Models\Enums\FaxNumberType.cs" />
     <Compile Include="Models\Enums\PhoneNumberType.cs" />
     <Compile Include="Models\FaxNumber.cs" />
     <Compile Include="Models\PhoneNumber.cs" />
