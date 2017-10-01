@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using NUnit.Framework;
 using AddressBook.Models;
 
 namespace AddressBook.Tests.Models
@@ -22,6 +24,15 @@ namespace AddressBook.Tests.Models
 			testAddress = new Address(type, streetAddress, city, state, postalCode);
 			sameTestAddress = new Address(type, streetAddress, city, state, postalCode);
 			differentTestAddress = new Address(differentType, streetAddress, city, state, postalCode);
+		}
+
+		[Test()]
+		public void RegexPatternTest()
+		{
+			Regex streetAddressRegex = RegexPatterns.Address["Street Address"];
+			Regex cityRegex = RegexPatterns.Address["City"];
+			Regex stateRegex = RegexPatterns.Address["State"];
+			Regex postalCodeRegex = RegexPatterns.Address["Postal Code"];
 		}
 
 		[Test()]
