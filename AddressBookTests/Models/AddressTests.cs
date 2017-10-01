@@ -33,6 +33,11 @@ namespace AddressBook.Tests.Models
 			Regex cityRegex = RegexPatterns.Address["City"];
 			Regex stateRegex = RegexPatterns.Address["State"];
 			Regex postalCodeRegex = RegexPatterns.Address["Postal Code"];
+
+			Assert.True(streetAddressRegex.IsMatch(testAddress.StreetAddress));
+			Assert.True(cityRegex.IsMatch(testAddress.City));
+			Assert.True(stateRegex.IsMatch(testAddress.State));
+			Assert.True(postalCodeRegex.IsMatch(testAddress.PostalCode));
 		}
 
 		[Test()]
