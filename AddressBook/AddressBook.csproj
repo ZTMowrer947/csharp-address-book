@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\AddressBookException.cs" />
+    <Compile Include="Functions.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\EmailAddress.cs" />
