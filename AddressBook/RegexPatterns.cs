@@ -13,6 +13,6 @@ namespace AddressBook
 			{"Postal Code", new Regex(@"^\d{5}(-\d{4})?$")}
 		};
 
-		public static Regex PhoneNumber = new Regex(@"^(\+\d )?(\(\d{3}\) )?(\d{3}-\d{4)$");
+		public static Regex PhoneNumber = new Regex(@"^(\+\d )?(\(\d{3}\) )?(\d{3}-\d{4})$");
 	}
 }
