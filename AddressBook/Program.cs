@@ -3,7 +3,7 @@
 	/// <summary>
 	/// The main program class.
 	/// </summary>
-	public class Program
+	public sealed class Program
 	{
 		/// <summary>
 		/// The main method.
