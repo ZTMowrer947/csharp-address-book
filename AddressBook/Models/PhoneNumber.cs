@@ -26,17 +26,48 @@ namespace AddressBook.Models
 		// Overrides
 		public override string ToString()
 		{
-			return base.ToString();
+			string typeOfPhoneNumberAsString = "";
+
+			switch (TypeOfPhoneNumber)
+			{
+				case PhoneNumberType.Home:
+					typeOfPhoneNumberAsString = "Home";
+					break;
+
+				case PhoneNumberType.Work:
+					typeOfPhoneNumberAsString = "Work";
+					break;
+
+				case PhoneNumberType.Mobile:
+					typeOfPhoneNumberAsString = "Mobile";
+					break;
+
+				case PhoneNumberType.Other:
+					typeOfPhoneNumberAsString = "Other";
+					break;
+			}
+
+			string formatString = string.Format("{0}: {1}", typeOfPhoneNumberAsString, Number);
+
+			return formatString;
 		}
 
 		public override int GetHashCode()
 		{
-			return base.GetHashCode();
+			int hash = TypeOfPhoneNumber.GetHashCode();
+			if (Number != null) hash += Number.GetHashCode();
+			return hash;
 		}
 
 		public override bool Equals(object obj)
 		{
-			return base.Equals(obj);
+			if (obj == null || GetType() != obj.GetType()) {
+				return false;
+			} else {
+				PhoneNumber that = (PhoneNumber)obj;
+
+				return TypeOfPhoneNumber == that.TypeOfPhoneNumber && Number == that.Number;
+			}
 		}
 	}
 }
