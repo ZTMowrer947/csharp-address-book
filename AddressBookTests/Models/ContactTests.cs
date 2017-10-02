@@ -35,6 +35,14 @@ namespace AddressBook.Tests.Models
 		[Test()]
 		public void StringConversionTest()
 		{
+			string nameField = "Name: Testy McTest";
+			string addressField = "\nAddresses: None";
+			string phoneField = "\nPhone Numbers: None";
+			string faxField = "\nFax Numbers: None";
+			string emailField = "\nEmail Addresses: None";
+
+			string expected = nameField + addressField + phoneField + faxField + emailField;
+			string actual = contact.ToString();
 			// TODO
 		}
 
