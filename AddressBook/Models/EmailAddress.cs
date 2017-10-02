@@ -1,4 +1,5 @@
 ﻿using AddressBook.Models.Enums;
+using Newtonsoft.Json;
 
 namespace AddressBook.Models
 {
@@ -8,7 +9,10 @@ namespace AddressBook.Models
 	public sealed class EmailAddress
 	{
 		// Properties
+		[JsonProperty(PropertyName = "type")]
 		public EmailAddressType TypeOfEmailAddress { get; private set; }
+
+		[JsonProperty(PropertyName = "address")]
 		public string Address { get; private set; }
 
 		// Constructor

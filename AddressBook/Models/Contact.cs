@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace AddressBook.Models
 {
@@ -8,9 +9,13 @@ namespace AddressBook.Models
 	public sealed class Contact
 	{
 		// Properties
+		[JsonIgnore()]
 		private string firstName;
+
+		[JsonIgnore()]
 		private string lastName;
-		
+
+		[JsonProperty(PropertyName = "name")]
 		public string Name
 		{
 			get
