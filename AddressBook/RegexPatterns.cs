@@ -5,6 +5,8 @@ namespace AddressBook
 {
 	public static class RegexPatterns
 	{
+		public static Regex Name = new Regex(@"[A-Z][a-z]+");
+
 		public static Dictionary<string, Regex> Address = new Dictionary<string, Regex>
 		{
 			{"Street Address", new Regex(@"^(\d{3,4} )?([A-z0-9]+ )+[A-z]+$")},
