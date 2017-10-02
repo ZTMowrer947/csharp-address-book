@@ -50,17 +50,114 @@ namespace AddressBook.Models
 		// Overrides
 		public override string ToString()
 		{
-			return base.ToString();
+			string nameField = string.Format("Name: {0}", Name);
+			string startingAddressField = "\nAddresses: ";
+			string startingPhoneNumberField = "\nPhone Numbers: ";
+			string startingFaxNumberField = "\nFax Numbers: ";
+			string startingEmailAddressField = "\nEmail Address: ";
+
+			string fieldSeparator = "\n\n";
+			string fieldEntrySeparator = "\n\t";
+
+			string addressFields = startingAddressField + (Addresses.Count == 0 ? "None" : "");
+			string phoneNumberFields = startingPhoneNumberField + (PhoneNumbers.Count == 0 ? "None" : "");
+			string faxNumberFields = startingFaxNumberField + (FaxNumbers.Count == 0 ? "None" : "");
+			string emailAddressFields = startingEmailAddressField + (EmailAddresses.Count == 0 ? "None" : "");
+
+			foreach (Address address in Addresses)
+			{
+				string entryString = fieldEntrySeparator + address.ToString();
+				addressFields += entryString;
+			}
+
+			foreach (PhoneNumber phoneNumber in PhoneNumbers)
+			{
+				string entryString = fieldEntrySeparator + phoneNumber.ToString();
+				phoneNumberFields += entryString;
+			}
+
+			foreach (FaxNumber faxNumber in FaxNumbers)
+			{
+				string entryString = fieldEntrySeparator + faxNumber.ToString();
+				faxNumberFields += entryString;
+			}
+
+			foreach (EmailAddress emailAddress in EmailAddresses)
+			{
+				string entryString = fieldEntrySeparator + emailAddress.ToString();
+				emailAddressFields += entryString;
+			}
+
+			string formatString = nameField +
+				addressFields +
+				fieldSeparator +
+				phoneNumberFields +
+				fieldSeparator +
+				faxNumberFields +
+				fieldSeparator +
+				emailAddressFields +
+				fieldSeparator;
+
+			return formatString;
 		}
 
 		public override int GetHashCode()
 		{
-			return base.GetHashCode();
+			int hash = 0;
+
+			if (Name != null) hash += Name.GetHashCode();
+
+			int addressHash = 0;
+			int phoneHash = 0;
+			int faxHash = 0;
+			int emailHash = 0;
+
+			foreach (Address address in Addresses)
+			{
+				addressHash += address.GetHashCode();
+			}
+
+			hash += addressHash;
+
+			foreach (PhoneNumber phoneNumber in PhoneNumbers)
+			{
+				phoneHash += phoneNumber.GetHashCode();
+			}
+
+			hash += phoneHash;
+
+			foreach (FaxNumber faxNumber in FaxNumbers)
+			{
+				faxHash += faxNumber.GetHashCode();
+			}
+
+			hash += faxHash;
+
+			foreach (EmailAddress emailAddress in EmailAddresses)
+			{
+				emailHash = emailAddress.GetHashCode();
+			}
+
+			hash += emailHash;
+
+			return hash;
 		}
 
 		public override bool Equals(object obj)
 		{
-			return base.Equals(obj);
+			if (obj == null || GetType() != obj.GetType()) {
+				return false;
+			} else {
+				Contact that = (Contact)obj;
+
+				return (
+					Name == that.Name &&
+					Addresses.SetEquals(that.Addresses) &&
+					PhoneNumbers.SetEquals(that.PhoneNumbers) &&
+					FaxNumbers.SetEquals(that.FaxNumbers) &&
+					EmailAddresses.SetEquals(that.EmailAddresses)
+				);
+			}
 		}
 	}
 }
