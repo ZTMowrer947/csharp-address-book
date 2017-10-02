@@ -2,5 +2,9 @@
 {
 	public enum EmailAddressType
 	{
+		Home,
+		Work,
+		School,
+		Other
 	}
 }
