@@ -52,11 +52,10 @@ namespace AddressBook.Models
 		{
 			string nameField = string.Format("Name: {0}", Name);
 			string startingAddressField = "\nAddresses: ";
-			string startingPhoneNumberField = "\nPhone Numbers: ";
-			string startingFaxNumberField = "\nFax Numbers: ";
-			string startingEmailAddressField = "\nEmail Address: ";
+			string startingPhoneNumberField = "\n\nPhone Numbers: ";
+			string startingFaxNumberField = "\n\nFax Numbers: ";
+			string startingEmailAddressField = "\n\nEmail Addresses: ";
 
-			string fieldSeparator = "\n\n";
 			string fieldEntrySeparator = "\n\t";
 
 			string addressFields = startingAddressField + (Addresses.Count == 0 ? "None" : "");
@@ -90,11 +89,8 @@ namespace AddressBook.Models
 
 			string formatString = nameField +
 				addressFields +
-				fieldSeparator +
 				phoneNumberFields +
-				fieldSeparator +
 				faxNumberFields +
-				fieldSeparator +
 				emailAddressFields;
 
 			return formatString;
