@@ -26,17 +26,49 @@ namespace AddressBook.Models
 		// Overrides
 		public override string ToString()
 		{
-			return base.ToString();
+			string typeOfEmailAddressAsString = "";
+
+			switch (TypeOfEmailAddress)
+			{
+				case EmailAddressType.Home:
+					typeOfEmailAddressAsString = "Home";
+					break;
+
+				case EmailAddressType.Work:
+					typeOfEmailAddressAsString = "Work";
+					break;
+
+				case EmailAddressType.School:
+					typeOfEmailAddressAsString = "School";
+					break;
+
+				case EmailAddressType.Other:
+					typeOfEmailAddressAsString = "Other";
+					break;
+			}
+
+			string formatString = string.Format("{0}: {1}", typeOfEmailAddressAsString, Address);
+
+			return formatString;
 		}
 
 		public override int GetHashCode()
 		{
-			return base.GetHashCode();
+			int hash = TypeOfEmailAddress.GetHashCode();
+			if (Address != null) hash += Address.GetHashCode();
+
+			return hash;
 		}
 
 		public override bool Equals(object obj)
 		{
-			return base.Equals(obj);
+			if (obj == null || GetType() != obj.GetType()) {
+				return false;
+			} else {
+				EmailAddress that = (EmailAddress)obj;
+
+				return TypeOfEmailAddress == that.TypeOfEmailAddress && Address == that.Address;
+			}
 		}
 	}
 }
