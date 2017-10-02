@@ -95,7 +95,7 @@ namespace AddressBook.Models
 				fieldSeparator +
 				faxNumberFields +
 				fieldSeparator +
-				emailAddressFields
+				emailAddressFields;
 
 			return formatString;
 		}
