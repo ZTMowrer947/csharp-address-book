@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\AddressBookException.cs" />
+    <Compile Include="Exceptions\InputValidationException.cs" />
     <Compile Include="Functions.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Contact.cs" />
