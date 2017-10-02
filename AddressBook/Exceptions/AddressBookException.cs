@@ -7,5 +7,8 @@ namespace AddressBook.Exceptions
 	/// </summary>
 	public class AddressBookException: Exception
 	{
+		public AddressBookException(string message) : base(message) { }
+
+		public AddressBookException() : base() { }
 	}
 }
