@@ -19,6 +19,11 @@ namespace AddressBook.Models
 		//}
 
 		// Override
+		public override string ToString()
+		{
+			return Number;
+		}
+
 		public override int GetHashCode()
 		{
 			return base.GetHashCode();
