@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using AddressBook.Models;
+using AddressBook.Models.Enums;
 
 namespace AddressBook.Tests.Models
 {
@@ -10,6 +11,11 @@ namespace AddressBook.Tests.Models
 		public Contact sameContact;
 		public Contact differentContact;
 
+		public Address address;
+		public PhoneNumber phoneNumber;
+		public FaxNumber faxNumber;
+		public EmailAddress emailAddress;
+
 		[OneTimeSetUp()]
 		public void SetUp()
 		{
@@ -19,6 +25,18 @@ namespace AddressBook.Tests.Models
 			contact = new Contact(name);
 			sameContact = new Contact(name);
 			differentContact = new Contact(differentName);
+
+			address = new Address(AddressType.Home, "123 Example Road", "Portland", "OR", "12345");
+			differentContact.Addresses.Add(address);
+
+			phoneNumber = new PhoneNumber(PhoneNumberType.Home, "(123) 456-7890");
+			differentContact.PhoneNumbers.Add(phoneNumber);
+
+			faxNumber = new FaxNumber("(234) 567-8901");
+			differentContact.FaxNumbers.Add(faxNumber);
+
+			emailAddress = new EmailAddress(EmailAddressType.Home, "exampleton@example.tld");
+			differentContact.EmailAddresses.Add(emailAddress);
 		}
 
 		[Test()]
@@ -37,13 +55,26 @@ namespace AddressBook.Tests.Models
 		{
 			string nameField = "Name: Testy McTest";
 			string addressField = "\nAddresses: None";
-			string phoneField = "\nPhone Numbers: None";
-			string faxField = "\nFax Numbers: None";
-			string emailField = "\nEmail Addresses: None";
+			string phoneField = "\n\nPhone Numbers: None";
+			string faxField = "\n\nFax Numbers: None";
+			string emailField = "\n\nEmail Addresses: None";
 
 			string expected = nameField + addressField + phoneField + faxField + emailField;
 			string actual = contact.ToString();
-			// TODO
+
+			Assert.AreEqual(expected, actual);
+
+			string differentNameField = "Name: Example Exampleton";
+			
+			string diffAddressField = addressField.Replace("None", string.Format("\n\t{0}", address.ToString()));
+			string diffPhoneField = phoneField.Replace("None", string.Format("\n\t{0}", phoneNumber.ToString()));
+			string diffFaxField = faxField.Replace("None", string.Format("\n\t{0}", faxNumber.ToString()));
+			string diffEmailField = emailField.Replace("None", string.Format("\n\t{0}", emailAddress.ToString()));
+
+			string differentExpected = differentNameField + diffAddressField + diffPhoneField + diffFaxField + diffEmailField;
+			string differentActual = differentContact.ToString();
+
+			Assert.AreEqual(differentExpected, differentActual);
 		}
 
 		[Test()]
