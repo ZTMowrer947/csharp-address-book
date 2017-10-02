@@ -51,6 +51,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Models\AddressTests.cs" />
+    <Compile Include="Models\EmailAddressTests.cs" />
     <Compile Include="Models\FaxNumberTests.cs" />
     <Compile Include="Models\PhoneNumberTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
