@@ -42,7 +42,7 @@ namespace AddressBook.Models
 			switch (TypeOfEmailAddress)
 			{
 				case EmailAddressType.Personal:
-					typeOfEmailAddressAsString = "Home";
+					typeOfEmailAddressAsString = "Personal";
 					break;
 
 				case EmailAddressType.Work:
