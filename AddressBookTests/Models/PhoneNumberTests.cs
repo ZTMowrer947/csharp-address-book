@@ -14,12 +14,11 @@ namespace AddressBook.Tests.Models
 		[OneTimeSetUp()]
 		public void SetUp()
 		{
-			PhoneNumberType typeOfPhoneNumber = PhoneNumberType.Home;
 			PhoneNumberType differentTypeOfPhoneNumber = PhoneNumberType.Mobile;
 			string number = "+1 (234) 567-8901";
 
-			phoneNumber = new PhoneNumber(typeOfPhoneNumber, number);
-			samePhoneNumber = new PhoneNumber(typeOfPhoneNumber, number);
+			phoneNumber = new PhoneNumber(number);
+			samePhoneNumber = new PhoneNumber(number);
 			differentPhoneNumber = new PhoneNumber(differentTypeOfPhoneNumber, number);
 		}
 

@@ -26,16 +26,16 @@ namespace AddressBook.Tests.Models
 			sameContact = new Contact(name);
 			differentContact = new Contact(differentName);
 
-			address = new Address(AddressType.Home, "123 Example Road", "Portland", "OR", "12345");
+			address = new Address("123 Example Road", "Portland", "OR", "12345");
 			differentContact.Addresses.Add(address);
 
-			phoneNumber = new PhoneNumber(PhoneNumberType.Home, "(123) 456-7890");
+			phoneNumber = new PhoneNumber("(123) 456-7890");
 			differentContact.PhoneNumbers.Add(phoneNumber);
 
 			faxNumber = new FaxNumber("(234) 567-8901");
 			differentContact.FaxNumbers.Add(faxNumber);
 
-			emailAddress = new EmailAddress(EmailAddressType.Home, "exampleton@example.tld");
+			emailAddress = new EmailAddress("exampleton@example.tld");
 			differentContact.EmailAddresses.Add(emailAddress);
 		}
 

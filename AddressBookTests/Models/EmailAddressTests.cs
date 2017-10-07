@@ -15,13 +15,12 @@ namespace AddressBook.Tests.Models
 		[OneTimeSetUp()]
 		public void SetUp()
 		{
-			EmailAddressType type = EmailAddressType.Personal;
 			EmailAddressType differentType = EmailAddressType.Work;
 
 			string address = "me@example.com";
 
-			emailAddress = new EmailAddress(type, address);
-			sameEmailAddress = new EmailAddress(type, address);
+			emailAddress = new EmailAddress(address);
+			sameEmailAddress = new EmailAddress(address);
 			differentEmailAddress = new EmailAddress(differentType, address);
 		}
 
