@@ -15,10 +15,17 @@ namespace AddressBook.Models
 		[JsonProperty(PropertyName = "address")]
 		public string Address { get; private set; }
 
-		// Constructor
+		// Constructors
+		[JsonConstructor()]
 		public EmailAddress(EmailAddressType typeOfEmailAddress, string address)
 		{
 			TypeOfEmailAddress = typeOfEmailAddress;
+			Address = address;
+		}
+
+		public EmailAddress(string address)
+		{
+			TypeOfEmailAddress = EmailAddressType.Personal;
 			Address = address;
 		}
 
@@ -34,7 +41,7 @@ namespace AddressBook.Models
 
 			switch (TypeOfEmailAddress)
 			{
-				case EmailAddressType.Home:
+				case EmailAddressType.Personal:
 					typeOfEmailAddressAsString = "Home";
 					break;
 

@@ -15,10 +15,17 @@ namespace AddressBook.Models
 		[JsonProperty(PropertyName = "number")]
 		public string Number { get; protected set; }
 
-		// Constructor
+		// Constructors
+		[JsonConstructor()]
 		public PhoneNumber(PhoneNumberType typeOfPhoneNumber, string number)
 		{
 			TypeOfPhoneNumber = typeOfPhoneNumber;
+			Number = number;
+		}
+
+		public PhoneNumber(string number)
+		{
+			TypeOfPhoneNumber = PhoneNumberType.Home;
 			Number = number;
 		}
 

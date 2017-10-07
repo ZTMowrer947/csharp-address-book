@@ -24,10 +24,20 @@ namespace AddressBook.Models
 		[JsonProperty(PropertyName = "postal_code")]
 		public string PostalCode { get; private set; }
 
-		// Constructor
+		// Constructors
+		[JsonConstructor()]
 		public Address(AddressType typeOfAddress, string streetAddress, string city, string state, string postalCode)
 		{
 			TypeOfAddress = typeOfAddress;
+			StreetAddress = streetAddress;
+			City = city;
+			State = state;
+			PostalCode = postalCode;
+		}
+
+		public Address(string streetAddress, string city, string state, string postalCode)
+		{
+			TypeOfAddress = AddressType.Home;
 			StreetAddress = streetAddress;
 			City = city;
 			State = state;
