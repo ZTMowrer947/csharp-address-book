@@ -2,7 +2,7 @@
 {
 	public enum EmailAddressType
 	{
-		Home,
+		Personal,
 		Work,
 		School,
 		Other

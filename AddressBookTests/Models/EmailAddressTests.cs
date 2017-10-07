@@ -15,7 +15,7 @@ namespace AddressBook.Tests.Models
 		[OneTimeSetUp()]
 		public void SetUp()
 		{
-			EmailAddressType type = EmailAddressType.Home;
+			EmailAddressType type = EmailAddressType.Personal;
 			EmailAddressType differentType = EmailAddressType.Work;
 
 			string address = "me@example.com";
@@ -39,7 +39,7 @@ namespace AddressBook.Tests.Models
 		[Test()]
 		public void StringConversionTest()
 		{
-			string expected = "Home: me@example.com";
+			string expected = "Personal: me@example.com";
 			string actual = emailAddress.ToString();
 
 			Assert.AreEqual(expected, actual);
