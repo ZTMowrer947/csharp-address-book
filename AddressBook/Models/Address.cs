@@ -1,5 +1,6 @@
 ﻿using AddressBook.Models.Enums;
 using Newtonsoft.Json;
+using System;
 
 namespace AddressBook.Models
 {
@@ -44,9 +45,36 @@ namespace AddressBook.Models
 			PostalCode = postalCode;
 		}
 
-		// public static Address Create()
-		// {
-		// }
+		public static Address Create()
+		{
+			Console.Write("Type: (Home/work/other) ");
+			string typeOfAddressAsString = Console.ReadLine().ToLower();
+			char firstLetter = typeOfAddressAsString.ToCharArray()[0];
+			AddressType typeOfAddress = AddressType.Home;
+
+			switch (firstLetter)
+			{
+				case 'w':
+					typeOfAddress = AddressType.Work;
+					break;
+
+				case 'o':
+					typeOfAddress = AddressType.Other;
+					break;
+
+				default:
+					Console.WriteLine("Keeping default of Home");
+					break;
+			}
+
+			string streetAddress = Functions.GetAndValidateInput("Street Address", RegexPatterns.Address["Street Address"]);
+			string city = Functions.GetAndValidateInput("City", RegexPatterns.Address["City"]);
+			string state = Functions.GetAndValidateInput("State", RegexPatterns.Address["State"]);
+			string postalCode = Functions.GetAndValidateInput("Postal Code", RegexPatterns.Address["Postal Code"]);
+
+			Address newAddress = typeOfAddress == AddressType.Home ? new Address(streetAddress, city, state, postalCode) : new Address(typeOfAddress, streetAddress, city, state, postalCode);
+			return newAddress;
+		}
 
 		// Overrides
 		public override string ToString()
