@@ -60,5 +60,9 @@ namespace AddressBook
 
 			return input;
 		}
+
+		public static bool InputStartsWith(string prompt, string start) {
+			return ReadLine(prompt).ToLower().StartsWith(start);
+		}
 	}
 }
