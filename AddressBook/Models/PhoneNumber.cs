@@ -1,5 +1,6 @@
 ﻿using AddressBook.Models.Enums;
 using Newtonsoft.Json;
+using System;
 
 namespace AddressBook.Models
 {
@@ -29,10 +30,37 @@ namespace AddressBook.Models
 			Number = number;
 		}
 
-		//public static PhoneNumber Create()
-		//{
+		public static PhoneNumber Create()
+		{
+			Console.Write("Type: (Home/work/mobile/other) ");
+			string typeOfPhoneNumberAsString = Console.ReadLine().ToLower();
+			char firstLetter = typeOfPhoneNumberAsString.ToCharArray()[0];
+			PhoneNumberType typeOfPhoneNumber = PhoneNumberType.Home;
 
-		//}
+			switch (firstLetter)
+			{
+				case 'w':
+					typeOfPhoneNumber = PhoneNumberType.Work;
+					break;
+
+				case 'm':
+					typeOfPhoneNumber = PhoneNumberType.Mobile;
+					break;
+
+				case 'o':
+					typeOfPhoneNumber = PhoneNumberType.Other;
+					break;
+
+				default:
+					Console.WriteLine("Keeping default of Home");
+					break;
+			}
+
+			string number = Functions.GetAndValidateInput("Phone Number", RegexPatterns.PhoneNumber);
+
+			PhoneNumber newPhoneNumber = new PhoneNumber(typeOfPhoneNumber, number);
+			return newPhoneNumber;
+		}
 
 		// Overrides
 		public override string ToString()
