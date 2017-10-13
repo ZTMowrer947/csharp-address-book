@@ -13,10 +13,13 @@ namespace AddressBook.Models
 			TypeOfPhoneNumber = PhoneNumberType.Fax;
 		}
 
-		//public new static FaxNumber Create()
-		//{
+		public new static FaxNumber Create()
+		{
+			string number = Functions.GetAndValidateInput("Fax Number", RegexPatterns.PhoneNumber);
 
-		//}
+			FaxNumber newFaxNumber = new FaxNumber(number);
+			return newFaxNumber;
+		}
 
 		// Override
 		public override string ToString()
