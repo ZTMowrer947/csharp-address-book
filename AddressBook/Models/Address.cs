@@ -47,8 +47,7 @@ namespace AddressBook.Models
 
 		public static Address Create()
 		{
-			Console.Write("Type: (Home/work/other) ");
-			string typeOfAddressAsString = Console.ReadLine().ToLower();
+			string typeOfAddressAsString = Functions.ReadLine("Type: (Home/work/other) ").ToLower();
 			char firstLetter = typeOfAddressAsString.ToCharArray()[0];
 			AddressType typeOfAddress = AddressType.Home;
 

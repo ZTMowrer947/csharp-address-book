@@ -32,8 +32,7 @@ namespace AddressBook.Models
 
 		public static PhoneNumber Create()
 		{
-			Console.Write("Type: (Home/work/mobile/other) ");
-			string typeOfPhoneNumberAsString = Console.ReadLine().ToLower();
+			string typeOfPhoneNumberAsString = Functions.ReadLine("Type: (Home/work/mobile/other) ").ToLower();
 			char firstLetter = typeOfPhoneNumberAsString.ToCharArray()[0];
 			PhoneNumberType typeOfPhoneNumber = PhoneNumberType.Home;
 
