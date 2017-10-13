@@ -1,5 +1,7 @@
 ﻿using AddressBook.Models.Enums;
 using Newtonsoft.Json;
+using System;
+using System.Net.Mail;
 
 namespace AddressBook.Models
 {
@@ -29,10 +31,50 @@ namespace AddressBook.Models
 			Address = address;
 		}
 
-		//public static EmailAddress Create()
-		//{
+		public static EmailAddress Create()
+		{
+			string typeOfEmailAddressAsString = Functions.ReadLine("Type: (Personal/work/school/other)").ToLower();
+			char firstLetter = typeOfEmailAddressAsString.ToCharArray()[0];
+			EmailAddressType typeOfEmailAddress = EmailAddressType.Personal;
 
-		//}
+			switch (firstLetter) {
+				case 'w':
+					typeOfEmailAddress = EmailAddressType.Work;
+					break;
+
+				case 's':
+					typeOfEmailAddress = EmailAddressType.School;
+					break;
+
+				case 'o':
+					typeOfEmailAddress = EmailAddressType.Other;
+					break;
+
+				default:
+					Console.WriteLine("Keeping default of Personal");
+					break;
+			}
+
+			string address = "";
+
+			while (true) {
+				string emailAddressString = Functions.ReadLine("Email Address: ");
+
+				try {
+					MailAddress mailAddress = new MailAddress(emailAddressString);
+				} catch (FormatException) {
+					Console.Write("Invalid email address. Press any key to retry");
+					Console.Clear();
+					continue;
+				}
+
+				address = emailAddressString;
+				break;
+			}
+
+			EmailAddress newEmailAddress = new EmailAddress(typeOfEmailAddress, address);
+			return newEmailAddress;
+		}
 
 		// Overrides
 		public override string ToString()
