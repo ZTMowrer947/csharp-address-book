@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using System;
 
 namespace AddressBook.Models
 {
@@ -47,10 +48,119 @@ namespace AddressBook.Models
 			EmailAddresses = new HashSet<EmailAddress>();
 		}
 
-		//public static Contact Create()
-		//{
+		public static Contact Create()
+		{
+			string firstName = Functions.GetAndValidateInput("First Name", RegexPatterns.Name);
+			string lastName = Functions.GetAndValidateInput("Last Name", RegexPatterns.Name);
+			string fullName = string.Format("{0} {1}", firstName, lastName);
 
-		//}
+			Contact newContact = new Contact(fullName);
+
+			bool addAddresses = !Functions.InputStartsWith("Add addresses? (Y/n) ", "n");
+			if (addAddresses) {
+				while (true) {
+					Console.Clear();
+
+					Address newAddress = Address.Create();
+					Console.WriteLine(newAddress);
+
+					bool addressOK = !Functions.InputStartsWith("Is this address OK? (Y/n) ", "n");
+
+					if (addressOK) {
+						newContact.Addresses.Add(newAddress);
+						Console.WriteLine("Added new address to new contact's set of addresses.");
+					} else {
+						Console.WriteLine("Discarded new address.");
+					}
+
+					bool addAnother = !Functions.InputStartsWith("Add another?", "n");
+					if (!addAnother) break;
+				}
+			}
+
+			bool addPhoneNumbers = !Functions.InputStartsWith("Add phone numbers? (Y/n) ", "n");
+			if (addPhoneNumbers)
+			{
+				while (true)
+				{
+					Console.Clear();
+
+					PhoneNumber newPhoneNumber = PhoneNumber.Create();
+					Console.WriteLine(newPhoneNumber);
+
+					bool addressOK = !Functions.InputStartsWith("Is this phone number OK? (Y/n) ", "n");
+
+					if (addressOK)
+					{
+						newContact.PhoneNumbers.Add(newPhoneNumber);
+						Console.WriteLine("Added new phone number to new contact's set of phone numbers.");
+					}
+					else
+					{
+						Console.WriteLine("Discarded new phone number.");
+					}
+
+					bool addAnother = !Functions.InputStartsWith("Add another?", "n");
+					if (!addAnother) break;
+				}
+			}
+
+			bool addFaxNumbers = !Functions.InputStartsWith("Add fax numbers? (Y/n) ", "n");
+			if (addFaxNumbers)
+			{
+				while (true)
+				{
+					Console.Clear();
+
+					FaxNumber newFaxNumber = FaxNumber.Create();
+					Console.WriteLine(newFaxNumber);
+
+					bool addressOK = !Functions.InputStartsWith("Is this fax number OK? (Y/n) ", "n");
+
+					if (addressOK)
+					{
+						newContact.FaxNumbers.Add(newFaxNumber);
+						Console.WriteLine("Added new fax number to new contact's set of fax numbers.");
+					}
+					else
+					{
+						Console.WriteLine("Discarded new fax number.");
+					}
+
+					bool addAnother = !Functions.InputStartsWith("Add another?", "n");
+					if (!addAnother) break;
+				}
+			}
+
+			bool addEmailAddresses = !Functions.InputStartsWith("Add email addresses? (Y/n) ", "n");
+			if (addEmailAddresses)
+			{
+				while (true)
+				{
+					Console.Clear();
+
+					EmailAddress newEmailAddress = EmailAddress.Create();
+					Console.WriteLine(newEmailAddress);
+
+					bool emailAddressOK = !Functions.InputStartsWith("Is this email address OK? (Y/n) ", "n");
+
+					if (emailAddressOK)
+					{
+						newContact.EmailAddresses.Add(newEmailAddress);
+						Console.WriteLine("Added new email address to new contact's set of email addresses.");
+					}
+					else
+					{
+						Console.WriteLine("Discarded new email address.");
+					}
+
+					bool addAnother = !Functions.InputStartsWith("Add another?", "n");
+					if (!addAnother) break;
+				}
+			}
+
+			return newContact;
+		}
 
 		// Overrides
 		public override string ToString()
