@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using AddressBook.Exceptions;
+using AddressBook.Models;
 
 namespace AddressBook
 {
@@ -67,6 +69,27 @@ namespace AddressBook
 
 		public static class Menu
 		{
+			public static void AddNewContact(ref HashSet<Contact> contactSet)
+			{
+				Console.Clear();
+				Console.WriteLine("Creating new Contact.\n");
+
+				Contact newContact = Contact.Create();
+
+				bool contactOK = !InputStartsWith("Is this contact OK? (Y/n", "n");
+
+				if (contactOK)
+				{
+					contactSet.Add(newContact);
+					Console.WriteLine("Added new contact to address book.");
+				}
+				else
+				{
+					Console.WriteLine("Discarded new contact.");
+				}
+			}
+
+
 			public static void ExecuteOptionChoice()
 			{
 				Console.Write("> ");
