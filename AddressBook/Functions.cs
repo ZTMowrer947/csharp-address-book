@@ -64,5 +64,44 @@ namespace AddressBook
 		public static bool InputStartsWith(string prompt, string start) {
 			return ReadLine(prompt).ToLower().StartsWith(start);
 		}
+
+		public static class Menu
+		{
+			public static void ExecuteOptionChoice()
+			{
+				Console.Write("> ");
+				char option = Console.ReadKey().KeyChar;
+
+				switch (option)
+				{
+					case 'h':
+					case '?':
+						break;
+
+					case 'a':
+						break;
+
+					case 'p':
+						break;
+
+					case 's':
+						break;
+
+					case 'e':
+						Environment.Exit(0);
+						break;
+
+					case 'd':
+						break;
+
+					case 'q':
+					case 'x':
+						break;
+
+					default:
+						break;
+				}
+			}
+		}
 	}
 }
