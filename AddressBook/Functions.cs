@@ -229,7 +229,7 @@ namespace AddressBook
 			{
 				//Console.WriteLine("Not Implemented Yet");
 				IEnumerable<Contact> searchResults = SearchForContacts(contacts);
-				Contact contactToEdit = new Contact("");
+				Contact contactToEdit = new Contact(" ");
 
 				if (searchResults.Count() == 1)
 				{
@@ -250,7 +250,7 @@ namespace AddressBook
 						}
 					}
 
-					if (contactToEdit == new Contact(""))
+					if (contactToEdit == new Contact(" "))
 					{
 						Console.WriteLine("No contact was selected to be edited, so nothing will be edited");
 					}
@@ -260,16 +260,57 @@ namespace AddressBook
 					Console.WriteLine("Search results are empty, nothing to edit");
 				}
 
-				if (contactToEdit != new Contact(""))
+				if (contactToEdit != new Contact(" "))
 				{
 					// TODO: Add edit method for contact class
 					Console.WriteLine("TODO: Add edit method for contact class");
 				}
 			}
 
-			public static void DeleteContact(ref HashSet<Contact> contacts)
+			public static Contact DeleteContact(ref HashSet<Contact> contacts)
 			{
-				Console.WriteLine("Not Implemented Yet");
+				//Console.WriteLine("Not Implemented Yet");
+				IEnumerable<Contact> searchResults = SearchForContacts(contacts);
+				Contact contactToDelete = new Contact(" ");
+
+				if (searchResults.Count() == 1)
+				{
+					contactToDelete = searchResults.First();
+				}
+				else if (searchResults.Count() > 1)
+				{
+					Console.WriteLine("Multiple search results found. Looping over them all. Select the one you want to delete.");
+					foreach (Contact contact in searchResults)
+					{
+						Console.WriteLine(contact);
+						bool deleteThisContact = !InputStartsWith("Delete this contact? (Y/n)", "n");
+
+						if (deleteThisContact)
+						{
+							contactToDelete = contact;
+							break;
+						}
+					}
+
+					if (contactToDelete == new Contact(" "))
+					{
+						Console.WriteLine("No contact was selected to be deleted, so nothing will be deleted");
+					}
+				}
+				else
+				{
+					Console.WriteLine("Search results are empty, nothing to delete");
+				}
+
+				if (contactToDelete != new Contact(" "))
+				{
+					contacts.Remove(contactToDelete);
+					return contactToDelete;
+				}
+				else
+				{
+					return null;
+				}
 			}
 
 			public static void SaveContactsAndExit(HashSet<Contact> contacts)
