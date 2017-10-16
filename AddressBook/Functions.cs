@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using AddressBook.Exceptions;
 using AddressBook.Models;
+using Newtonsoft.Json;
 
 namespace AddressBook
 {
@@ -181,6 +183,34 @@ namespace AddressBook
 					default:
 						Console.WriteLine("Invalid menu command.");
 						break;
+				}
+			}
+		}
+
+		public static class JSONHandling
+		{
+			public static HashSet<Contact> ReadContactsFromFile(string filePath)
+			{
+				JsonSerializer serializer = new JsonSerializer();
+
+				using (StreamReader sr = new StreamReader(filePath))
+				using (JsonTextReader reader = new JsonTextReader(sr))
+				{
+					return serializer.Deserialize<HashSet<Contact>>(reader);
+				}
+			}
+
+			public static void WriteContactsToFile(string filePath, HashSet<Contact> contacts)
+			{
+				JsonSerializer serializer = new JsonSerializer();
+				serializer.Formatting = Formatting.Indented;
+
+				using (StreamWriter sw = new StreamWriter(filePath))
+				using (JsonTextWriter writer = new JsonTextWriter(sw))
+				{
+					writer.Indentation = 4;
+
+					serializer.Serialize(writer, contacts);
 				}
 			}
 		}
