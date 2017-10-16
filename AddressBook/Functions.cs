@@ -138,7 +138,7 @@ namespace AddressBook
 				Console.WriteLine("Not Implemented Yet");
 			}
 
-			public static void ExecuteOptionChoice()
+			public static void ExecuteOptionChoice(ref HashSet<Contact> contacts)
 			{
 				Console.Write("> ");
 				char option = Console.ReadKey().KeyChar;
@@ -147,21 +147,27 @@ namespace AddressBook
 				{
 					case 'h':
 					case '?':
+						ShowHelp();
 						break;
 
 					case 'a':
+						AddNewContact(ref contacts);
 						break;
 
 					case 'p':
+						PrintContacts(ref contacts);
 						break;
 
 					case 's':
+						SearchForContacts(ref contacts);
 						break;
 
 					case 'e':
+						EditContact(ref contacts);
 						break;
 
 					case 'd':
+						DeleteContact(ref contacts);
 						break;
 
 					case 'q':
