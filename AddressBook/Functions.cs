@@ -304,7 +304,9 @@ namespace AddressBook
 
 				if (contactToDelete != new Contact(" "))
 				{
+					Console.WriteLine("Deleting Contact...");
 					contacts.Remove(contactToDelete);
+					Console.WriteLine("Contact Deleted.");
 					return contactToDelete;
 				}
 				else
