@@ -141,8 +141,14 @@ namespace AddressBook
 
 				HashSet<Contact> results = new HashSet<Contact>();
 
-				switch(searchBy) {
-					case "address":
+				char firstLetter = 'n';
+				try {
+					firstLetter = searchBy.ToLower().ToCharArray()[0];
+				} catch (IndexOutOfRangeException) {}
+
+				switch(firstLetter) {
+					case 'a':
+						Console.WriteLine("Searching by Address.");
 						foreach (Contact contact in contacts)
 						{
 							var addressQuery =
@@ -156,8 +162,8 @@ namespace AddressBook
 						}
 						break;
 
-					case "phonenumber":
-					case "phone number":
+					case 'p':
+						Console.WriteLine("Searching by Phone Number.");
 						foreach (Contact contact in contacts)
 						{
 							var phoneQuery =
@@ -172,8 +178,8 @@ namespace AddressBook
 						}
 						break;
 
-					case "faxnumber":
-					case "fax number":
+					case 'f':
+						Console.WriteLine("Searching by Fax Number.");
 						foreach (Contact contact in contacts)
 						{
 							var faxQuery =
@@ -188,8 +194,8 @@ namespace AddressBook
 						}
 						break;
 
-					case "emailaddress":
-					case "email address":
+					case 'e':
+						Console.WriteLine("Searching by Email Address.");
 						foreach (Contact contact in contacts)
 						{
 							var emailQuery =
