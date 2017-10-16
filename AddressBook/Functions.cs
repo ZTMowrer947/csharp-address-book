@@ -123,8 +123,9 @@ namespace AddressBook
 				}
 			}
 
-			public static void SearchForContacts(ref HashSet<Contact> contacts) {
+			public static IEnumerable<Contact> SearchForContacts(ref HashSet<Contact> contacts) {
 				Console.WriteLine("Not Implemented Yet");
+				return contacts; // To satisfy compiler for now
 			}
 
 			public static void EditContact(ref HashSet<Contact> contacts)
