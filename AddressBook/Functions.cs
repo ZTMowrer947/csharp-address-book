@@ -120,10 +120,15 @@ namespace AddressBook
 
 			public static void PrintContacts(HashSet<Contact> contacts)
 			{
-				foreach (Contact contact in contacts)
-				{
-					Console.WriteLine(contact);
-					Console.WriteLine();
+				Console.WriteLine("Contacts:\n");
+				if (contacts.Count > 0) {
+					foreach (Contact contact in contacts)
+					{
+						Console.WriteLine(contact);
+						Console.WriteLine();
+					}
+				} else {
+					Console.WriteLine("None\n");
 				}
 			}
 
