@@ -102,6 +102,7 @@ namespace AddressBook
 
 				Contact newContact = Contact.Create();
 
+				Console.WriteLine(newContact);
 				bool contactOK = !InputStartsWith("Is this contact OK? (Y/n) ", "n");
 
 				if (contactOK)
