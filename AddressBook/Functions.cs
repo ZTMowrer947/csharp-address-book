@@ -142,6 +142,24 @@ namespace AddressBook
 				Console.WriteLine("Not Implemented Yet");
 			}
 
+			public static void SaveContactsAndExit(ref HashSet<Contact> contacts)
+			{
+				Console.WriteLine("Saving Contacts...");
+				string currentDir = Directory.GetCurrentDirectory();
+				string JSONFileName = "AddressBook.json";
+				string JSONFilePath = Path.Combine(currentDir, JSONFileName);
+
+				try {
+					JSONHandling.WriteContactsToFile(JSONFilePath, contacts);
+					Console.WriteLine("Saved Contacts successfully!");
+				} catch (JsonSerializationException jse) {
+					Console.WriteLine(string.Format("Couldn't Save Contacts: {0}", jse.Message));
+				} finally {
+					Console.WriteLine("Exiting...");
+					Environment.Exit(0);
+				}
+			}
+
 			public static void ExecuteOptionChoice(ref HashSet<Contact> contacts)
 			{
 				Console.Write("> ");
