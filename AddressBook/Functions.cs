@@ -69,6 +69,31 @@ namespace AddressBook
 
 		public static class Menu
 		{
+			public static void ShowHelp()
+			{
+				Dictionary<string, string> helpItems = new Dictionary<string, string>
+				{
+					{"h", "Show this help" },
+					{"?", "Same as h" },
+					{"a", "Add a new contact" },
+					{"p", "Print all contacts" },
+					{"s", "Search for contacts" },
+					{"e", "Edit a contact" },
+					{"d", "Delete a contact" },
+					{"q", "Exit and Save contacts" },
+					{"x", "Same as x" }
+				};
+
+				Console.WriteLine("Commands:\n");
+
+				foreach (KeyValuePair<string, string> kvp in helpItems)
+				{
+					Console.WriteLine(string.Format("{0}: {1}", kvp.Key, kvp.Value));
+				}
+
+				Console.WriteLine();
+			}
+
 			public static void AddNewContact(ref HashSet<Contact> contactSet)
 			{
 				Console.Clear();
@@ -111,7 +136,6 @@ namespace AddressBook
 						break;
 
 					case 'e':
-						Environment.Exit(0);
 						break;
 
 					case 'd':
@@ -119,9 +143,11 @@ namespace AddressBook
 
 					case 'q':
 					case 'x':
+						Environment.Exit(0);
 						break;
 
 					default:
+						Console.WriteLine("Invalid menu command.");
 						break;
 				}
 			}
