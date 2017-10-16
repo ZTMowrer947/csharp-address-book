@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using AddressBook.Exceptions;
@@ -133,8 +134,90 @@ namespace AddressBook
 			}
 
 			public static IEnumerable<Contact> SearchForContacts(HashSet<Contact> contacts) {
-				Console.WriteLine("Not Implemented Yet");
-				return contacts; // To satisfy compiler for now
+				//Console.WriteLine("Not Implemented Yet");
+
+				string searchBy = ReadLine("Search By: (Name/address/phone number/fax number/email address) ");
+				string searchFor = ReadLine("Search For: ");
+
+				HashSet<Contact> results = new HashSet<Contact>();
+
+				switch(searchBy) {
+					case "address":
+						foreach (Contact contact in contacts)
+						{
+							var addressQuery =
+								from address in contact.Addresses
+								where address.ToString().Contains(searchFor)
+								select contact;
+
+							foreach (Contact queryContact in addressQuery) {
+								results.Add(queryContact);
+							}
+						}
+						break;
+
+					case "phonenumber":
+					case "phone number":
+						foreach (Contact contact in contacts)
+						{
+							var phoneQuery =
+								from phoneNumber in contact.PhoneNumbers
+								where phoneNumber.ToString().Contains(searchFor)
+								select contact;
+
+							foreach (Contact queryContact in phoneQuery)
+							{
+								results.Add(queryContact);
+							}
+						}
+						break;
+
+					case "faxnumber":
+					case "fax number":
+						foreach (Contact contact in contacts)
+						{
+							var faxQuery =
+								from faxNumber in contact.FaxNumbers
+								where faxNumber.ToString().Contains(searchFor)
+								select contact;
+
+							foreach (Contact queryContact in faxQuery)
+							{
+								results.Add(queryContact);
+							}
+						}
+						break;
+
+					case "emailaddress":
+					case "email address":
+						foreach (Contact contact in contacts)
+						{
+							var emailQuery =
+								from emailAddress in contact.EmailAddresses
+								where emailAddress.ToString().Contains(searchFor)
+								select contact;
+
+							foreach (Contact queryContact in emailQuery)
+							{
+								results.Add(queryContact);
+							}
+						}
+						break;
+
+					default:
+						var nameQuery =
+							from contact in contacts
+							where contact.Name.Contains(searchFor)
+							select contact;
+
+						foreach (Contact queryContact in nameQuery)
+						{
+							results.Add(queryContact);
+						}
+						break;
+				}
+
+				return results;
 			}
 
 			public static void EditContact(ref HashSet<Contact> contacts)
@@ -187,7 +270,21 @@ namespace AddressBook
 						break;
 
 					case 's':
-						SearchForContacts(contacts);
+						IEnumerable<Contact> searchResults = SearchForContacts(contacts);
+
+						Console.Write("Results: ");
+
+						if (searchResults.Count() > 0)
+						{
+							foreach (Contact contact in searchResults)
+							{
+								Console.WriteLine(string.Format("\n{0}\n", contact));
+							}
+						}
+						else
+						{
+							Console.WriteLine("None\n");
+						}
 						break;
 
 					case 'e':
