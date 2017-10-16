@@ -36,10 +36,10 @@ namespace AddressBook.Models
 		[JsonProperty(PropertyName = "addresses")]
 		public HashSet<Address> Addresses { get; }
 
-		[JsonProperty(PropertyName = "addresses")]
+		[JsonProperty(PropertyName = "phone_numbers")]
 		public HashSet<PhoneNumber> PhoneNumbers { get; }
 
-		[JsonProperty(PropertyName = "addresses")]
+		[JsonProperty(PropertyName = "fax_numbers")]
 		public HashSet<FaxNumber> FaxNumbers { get; }
 
 		[JsonProperty(PropertyName = "email_addresses")]
