@@ -118,7 +118,7 @@ namespace AddressBook
 				}
 			}
 
-			public static void PrintContacts(ref HashSet<Contact> contacts)
+			public static void PrintContacts(HashSet<Contact> contacts)
 			{
 				foreach (Contact contact in contacts)
 				{
@@ -127,7 +127,7 @@ namespace AddressBook
 				}
 			}
 
-			public static IEnumerable<Contact> SearchForContacts(ref HashSet<Contact> contacts) {
+			public static IEnumerable<Contact> SearchForContacts(HashSet<Contact> contacts) {
 				Console.WriteLine("Not Implemented Yet");
 				return contacts; // To satisfy compiler for now
 			}
@@ -142,7 +142,7 @@ namespace AddressBook
 				Console.WriteLine("Not Implemented Yet");
 			}
 
-			public static void SaveContactsAndExit(ref HashSet<Contact> contacts)
+			public static void SaveContactsAndExit(HashSet<Contact> contacts)
 			{
 				Console.WriteLine("Saving Contacts...");
 				string currentDir = Directory.GetCurrentDirectory();
