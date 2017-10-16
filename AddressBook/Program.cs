@@ -19,10 +19,10 @@ namespace AddressBook
 
 			Console.WriteLine("Welcome to the Address Book!\n");
 
-			while (true) {
-				Functions.Menu.ShowHelp();
-				Console.WriteLine();
+			Functions.Menu.ShowHelp();
+			Console.WriteLine();
 
+			while (true) {
 				Functions.Menu.ExecuteOptionChoice(ref addressBook);
 
 				Console.Write("Press any key to return to the main menu...");
