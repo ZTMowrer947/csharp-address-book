@@ -123,6 +123,20 @@ namespace AddressBook
 				}
 			}
 
+			public static void SearchForContacts(ref HashSet<Contact> contacts) {
+				Console.WriteLine("Not Implemented Yet");
+			}
+
+			public static void EditContact(ref HashSet<Contact> contacts)
+			{
+				Console.WriteLine("Not Implemented Yet");
+			}
+
+			public static void DeleteContact(ref HashSet<Contact> contacts)
+			{
+				Console.WriteLine("Not Implemented Yet");
+			}
+
 			public static void ExecuteOptionChoice()
 			{
 				Console.Write("> ");
