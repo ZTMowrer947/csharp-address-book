@@ -1,4 +1,8 @@
-﻿namespace AddressBook
+﻿using System;
+using System.Collections.Generic;
+using AddressBook.Models;
+
+namespace AddressBook
 {
 	/// <summary>
 	/// The main program class.
@@ -11,6 +15,20 @@
 		/// <param name="args">Ignored parameters.</param>
 		public static void Main(string[] args)
 		{
+			HashSet<Contact> addressBook = new HashSet<Contact>();
+
+			Console.WriteLine("Welcome to the Address Book!\n");
+
+			while (true) {
+				Functions.Menu.ShowHelp();
+				Console.WriteLine();
+
+				Functions.Menu.ExecuteOptionChoice(ref addressBook);
+
+				Console.Write("Press any key to return to the main menu...");
+				Console.ReadKey();
+				Console.Clear();
+			}
 		}
 	}
 }
