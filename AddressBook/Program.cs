@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using AddressBook.Models;
 
 namespace AddressBook
@@ -16,6 +18,35 @@ namespace AddressBook
 		public static void Main(string[] args)
 		{
 			HashSet<Contact> addressBook = new HashSet<Contact>();
+
+			string currentDir = Directory.GetCurrentDirectory();
+			string fileName = "AddressBook.json";
+			string filePath = Path.Combine(currentDir, fileName);
+
+			Console.WriteLine("Checking for saved contact file...");
+			if (File.Exists(filePath))
+			{
+				Console.WriteLine("File found. Reading contacts...");
+
+				try {
+					HashSet<Contact> jsonContacts = Functions.JSONHandling.ReadContactsFromFile(filePath);
+					Console.WriteLine("Contacts read successfully!\n");
+					if (jsonContacts != null) {
+						addressBook = jsonContacts;
+					}
+				}
+				catch(JsonSerializationException jse)
+				{
+					Console.WriteLine(string.Format("Couldn't read contacts: {0}", jse.Message));
+					Console.WriteLine("Using a blank address book.\n");
+				}
+			}
+			else
+			{
+				Console.WriteLine("File not found. Creating it...");
+				File.Create(filePath).Close();
+				Console.WriteLine("File created. Using a blank address book.\n");
+			}
 
 			Console.WriteLine("Welcome to the Address Book!\n");
 
