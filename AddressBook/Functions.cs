@@ -227,7 +227,6 @@ namespace AddressBook
 
 			public static void EditContact(ref HashSet<Contact> contacts)
 			{
-				//Console.WriteLine("Not Implemented Yet");
 				IEnumerable<Contact> searchResults = SearchForContacts(contacts);
 				Contact contactToEdit = new Contact(" ");
 
@@ -269,7 +268,6 @@ namespace AddressBook
 
 			public static Contact DeleteContact(ref HashSet<Contact> contacts)
 			{
-				//Console.WriteLine("Not Implemented Yet");
 				IEnumerable<Contact> searchResults = SearchForContacts(contacts);
 				Contact contactToDelete = new Contact(" ");
 
