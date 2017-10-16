@@ -33,9 +33,16 @@ namespace AddressBook.Models
 			}
 		}
 
+		[JsonProperty(PropertyName = "addresses")]
 		public HashSet<Address> Addresses { get; }
+
+		[JsonProperty(PropertyName = "addresses")]
 		public HashSet<PhoneNumber> PhoneNumbers { get; }
+
+		[JsonProperty(PropertyName = "addresses")]
 		public HashSet<FaxNumber> FaxNumbers { get; }
+
+		[JsonProperty(PropertyName = "email_addresses")]
 		public HashSet<EmailAddress> EmailAddresses { get; }
 
 		// Constructor
