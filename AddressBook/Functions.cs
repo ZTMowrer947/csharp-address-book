@@ -134,8 +134,6 @@ namespace AddressBook
 			}
 
 			public static IEnumerable<Contact> SearchForContacts(HashSet<Contact> contacts) {
-				//Console.WriteLine("Not Implemented Yet");
-
 				string searchBy = ReadLine("Search By: (Name/address/phone number/fax number/email address) ");
 				string searchFor = ReadLine("Search For: ");
 
@@ -211,6 +209,7 @@ namespace AddressBook
 						break;
 
 					default:
+						Console.WriteLine("Searching by Name.");
 						var nameQuery =
 							from contact in contacts
 							where contact.Name.Contains(searchFor)
