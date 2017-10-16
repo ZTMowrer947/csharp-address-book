@@ -142,6 +142,7 @@ namespace AddressBook
 			{
 				Console.Write("> ");
 				char option = Console.ReadKey().KeyChar;
+				Console.WriteLine();
 
 				switch (option)
 				{
