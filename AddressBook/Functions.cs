@@ -114,6 +114,14 @@ namespace AddressBook
 				}
 			}
 
+			public static void PrintContacts(ref HashSet<Contact> contacts)
+			{
+				foreach (Contact contact in contacts)
+				{
+					Console.WriteLine(contact);
+					Console.WriteLine();
+				}
+			}
 
 			public static void ExecuteOptionChoice()
 			{
