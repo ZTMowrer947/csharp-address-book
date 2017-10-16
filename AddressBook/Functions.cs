@@ -178,11 +178,11 @@ namespace AddressBook
 						break;
 
 					case 'p':
-						PrintContacts(ref contacts);
+						PrintContacts(contacts);
 						break;
 
 					case 's':
-						SearchForContacts(ref contacts);
+						SearchForContacts(contacts);
 						break;
 
 					case 'e':
@@ -195,7 +195,7 @@ namespace AddressBook
 
 					case 'q':
 					case 'x':
-						Environment.Exit(0);
+						SaveContactsAndExit(contacts);
 						break;
 
 					default:
