@@ -227,7 +227,44 @@ namespace AddressBook
 
 			public static void EditContact(ref HashSet<Contact> contacts)
 			{
-				Console.WriteLine("Not Implemented Yet");
+				//Console.WriteLine("Not Implemented Yet");
+				IEnumerable<Contact> searchResults = SearchForContacts(contacts);
+				Contact contactToEdit = new Contact("");
+
+				if (searchResults.Count() == 1)
+				{
+					contactToEdit = searchResults.First();
+				}
+				else if (searchResults.Count() > 1)
+				{
+					Console.WriteLine("Multiple search results found. Looping over them all. Select the one you want to edit.");
+					foreach (Contact contact in searchResults)
+					{
+						Console.WriteLine(contact);
+						bool editThisContact = !InputStartsWith("Edit this contact? (Y/n)", "n");
+
+						if (editThisContact)
+						{
+							contactToEdit = contact;
+							break;
+						}
+					}
+
+					if (contactToEdit == new Contact(""))
+					{
+						Console.WriteLine("No contact was selected to be edited, so nothing will be edited");
+					}
+				}
+				else
+				{
+					Console.WriteLine("Search results are empty, nothing to edit");
+				}
+
+				if (contactToEdit != new Contact(""))
+				{
+					// TODO: Add edit method for contact class
+					Console.WriteLine("TODO: Add edit method for contact class");
+				}
 			}
 
 			public static void DeleteContact(ref HashSet<Contact> contacts)
