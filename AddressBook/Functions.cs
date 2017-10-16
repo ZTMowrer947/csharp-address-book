@@ -55,6 +55,7 @@ namespace AddressBook
 				catch (InputValidationException ive)
 				{
 					Console.Write(string.Format("{0} Press any key to reenter...", ive.Message));
+					Console.WriteLine();
 					Console.ReadKey();
 					continue;
 				}
@@ -101,7 +102,7 @@ namespace AddressBook
 
 				Contact newContact = Contact.Create();
 
-				bool contactOK = !InputStartsWith("Is this contact OK? (Y/n", "n");
+				bool contactOK = !InputStartsWith("Is this contact OK? (Y/n) ", "n");
 
 				if (contactOK)
 				{

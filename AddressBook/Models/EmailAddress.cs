@@ -33,7 +33,7 @@ namespace AddressBook.Models
 
 		public static EmailAddress Create()
 		{
-			string typeOfEmailAddressAsString = Functions.ReadLine("Type: (Personal/work/school/other)").ToLower();
+			string typeOfEmailAddressAsString = Functions.ReadLine("Type: (Personal/work/school/other) ").ToLower();
 			char firstLetter = 'h';
 			EmailAddressType typeOfEmailAddress = EmailAddressType.Personal;
 

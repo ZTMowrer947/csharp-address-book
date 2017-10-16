@@ -73,7 +73,7 @@ namespace AddressBook.Models
 						Console.WriteLine("Discarded new address.");
 					}
 
-					bool addAnother = !Functions.InputStartsWith("Add another?", "n");
+					bool addAnother = !Functions.InputStartsWith("Add another? (Y/n) ", "n");
 					if (!addAnother) break;
 				}
 			}
@@ -100,7 +100,7 @@ namespace AddressBook.Models
 						Console.WriteLine("Discarded new phone number.");
 					}
 
-					bool addAnother = !Functions.InputStartsWith("Add another?", "n");
+					bool addAnother = !Functions.InputStartsWith("Add another? (Y/n) ", "n");
 					if (!addAnother) break;
 				}
 			}
@@ -127,7 +127,7 @@ namespace AddressBook.Models
 						Console.WriteLine("Discarded new fax number.");
 					}
 
-					bool addAnother = !Functions.InputStartsWith("Add another?", "n");
+					bool addAnother = !Functions.InputStartsWith("Add another? (Y/n) ", "n");
 					if (!addAnother) break;
 				}
 			}
@@ -154,7 +154,7 @@ namespace AddressBook.Models
 						Console.WriteLine("Discarded new email address.");
 					}
 
-					bool addAnother = !Functions.InputStartsWith("Add another?", "n");
+					bool addAnother = !Functions.InputStartsWith("Add another? (Y/n) ", "n");
 					if (!addAnother) break;
 				}
 			}
