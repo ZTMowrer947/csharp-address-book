@@ -48,22 +48,28 @@ namespace AddressBook.Models
 		public static Address Create()
 		{
 			string typeOfAddressAsString = Functions.ReadLine("Type: (Home/work/other) ").ToLower();
-			char firstLetter = typeOfAddressAsString.ToCharArray()[0];
+			char firstLetter = 'h';
 			AddressType typeOfAddress = AddressType.Home;
 
-			switch (firstLetter)
+			try
 			{
-				case 'w':
-					typeOfAddress = AddressType.Work;
-					break;
+				firstLetter = typeOfAddressAsString.ToCharArray()[0];
+				switch (firstLetter)
+				{
+					case 'w':
+						typeOfAddress = AddressType.Work;
+						break;
 
-				case 'o':
-					typeOfAddress = AddressType.Other;
-					break;
+					case 'o':
+						typeOfAddress = AddressType.Other;
+						break;
 
-				default:
-					Console.WriteLine("Keeping default of Home");
-					break;
+					default:
+						Console.WriteLine("Keeping default of Home");
+						break;
+				}
+			} catch (IndexOutOfRangeException) {
+				Console.WriteLine("Keeping default of Home");
 			}
 
 			string streetAddress = Functions.GetAndValidateInput("Street Address", RegexPatterns.Address["Street Address"]);

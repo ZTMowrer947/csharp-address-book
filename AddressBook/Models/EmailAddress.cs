@@ -34,25 +34,31 @@ namespace AddressBook.Models
 		public static EmailAddress Create()
 		{
 			string typeOfEmailAddressAsString = Functions.ReadLine("Type: (Personal/work/school/other)").ToLower();
-			char firstLetter = typeOfEmailAddressAsString.ToCharArray()[0];
+			char firstLetter = 'h';
 			EmailAddressType typeOfEmailAddress = EmailAddressType.Personal;
 
-			switch (firstLetter) {
-				case 'w':
-					typeOfEmailAddress = EmailAddressType.Work;
-					break;
+			try {
+				firstLetter = typeOfEmailAddressAsString.ToCharArray()[0];
+				switch (firstLetter)
+				{
+					case 'w':
+						typeOfEmailAddress = EmailAddressType.Work;
+						break;
 
-				case 's':
-					typeOfEmailAddress = EmailAddressType.School;
-					break;
+					case 's':
+						typeOfEmailAddress = EmailAddressType.School;
+						break;
 
-				case 'o':
-					typeOfEmailAddress = EmailAddressType.Other;
-					break;
+					case 'o':
+						typeOfEmailAddress = EmailAddressType.Other;
+						break;
 
-				default:
-					Console.WriteLine("Keeping default of Personal");
-					break;
+					default:
+						Console.WriteLine("Keeping default of Personal");
+						break;
+				}
+			} catch (IndexOutOfRangeException) {
+				Console.WriteLine("Keeping default of Personal");
 			}
 
 			string address = "";

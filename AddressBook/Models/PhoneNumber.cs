@@ -33,26 +33,31 @@ namespace AddressBook.Models
 		public static PhoneNumber Create()
 		{
 			string typeOfPhoneNumberAsString = Functions.ReadLine("Type: (Home/work/mobile/other) ").ToLower();
-			char firstLetter = typeOfPhoneNumberAsString.ToCharArray()[0];
+			char firstLetter = 'h';
 			PhoneNumberType typeOfPhoneNumber = PhoneNumberType.Home;
 
-			switch (firstLetter)
-			{
-				case 'w':
-					typeOfPhoneNumber = PhoneNumberType.Work;
-					break;
+			try {
+				firstLetter = typeOfPhoneNumberAsString.ToCharArray()[0];
+				switch (firstLetter)
+				{
+					case 'w':
+						typeOfPhoneNumber = PhoneNumberType.Work;
+						break;
 
-				case 'm':
-					typeOfPhoneNumber = PhoneNumberType.Mobile;
-					break;
+					case 'm':
+						typeOfPhoneNumber = PhoneNumberType.Mobile;
+						break;
 
-				case 'o':
-					typeOfPhoneNumber = PhoneNumberType.Other;
-					break;
+					case 'o':
+						typeOfPhoneNumber = PhoneNumberType.Other;
+						break;
 
-				default:
-					Console.WriteLine("Keeping default of Home");
-					break;
+					default:
+						Console.WriteLine("Keeping default of Home");
+						break;
+				}
+			} catch (IndexOutOfRangeException) {
+				Console.WriteLine("Keeping default of Home");
 			}
 
 			string number = Functions.GetAndValidateInput("Phone Number", RegexPatterns.PhoneNumber);
