@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace AddressBook
 {
+	/// <summary>
+	/// Static class of Regular Expressions used in the program.
+	/// </summary>
 	public static class RegexPatterns
 	{
 		public static Regex Name = new Regex(@"[A-Z][a-z]+");

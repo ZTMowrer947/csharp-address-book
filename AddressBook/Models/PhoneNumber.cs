@@ -30,6 +30,10 @@ namespace AddressBook.Models
 			Number = number;
 		}
 
+		/// <summary>
+		/// Interactively creates a new phone number.
+		/// </summary>
+		/// <returns>The new phone number.</returns>
 		public static PhoneNumber Create()
 		{
 			string typeOfPhoneNumberAsString = Functions.ReadLine("Type: (Home/work/mobile/other) ").ToLower();
@@ -66,7 +70,9 @@ namespace AddressBook.Models
 			return newPhoneNumber;
 		}
 
-		// Edit
+		/// <summary>
+		/// Interactively modifies a phone number.
+		/// </summary>
 		public virtual void Edit()
 		{
 			bool editType = Functions.InputStartsWith("Edit phone number type? (y/N) ", "y");

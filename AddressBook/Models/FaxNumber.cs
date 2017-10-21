@@ -13,6 +13,10 @@ namespace AddressBook.Models
 			TypeOfPhoneNumber = PhoneNumberType.Fax;
 		}
 
+		/// <summary>
+		/// Interactively creates a new fax number.
+		/// </summary>
+		/// <returns>The new fax number.</returns>
 		public new static FaxNumber Create()
 		{
 			string number = Functions.GetAndValidateInput("Fax Number", RegexPatterns.PhoneNumber);
@@ -21,7 +25,9 @@ namespace AddressBook.Models
 			return newFaxNumber;
 		}
 
-		// Edit
+		/// <summary>
+		/// Interactively modifies a fax number.
+		/// </summary>
 		public override void Edit()
 		{
 			Number = Functions.GetAndValidateInput("Fax Number", RegexPatterns.PhoneNumber);

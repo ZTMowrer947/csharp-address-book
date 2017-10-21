@@ -31,6 +31,10 @@ namespace AddressBook.Models
 			Address = address;
 		}
 
+		/// <summary>
+		/// Interactively creates a new email address.
+		/// </summary>
+		/// <returns>The new email address.</returns>
 		public static EmailAddress Create()
 		{
 			string typeOfEmailAddressAsString = Functions.ReadLine("Type: (Personal/work/school/other) ").ToLower();
@@ -83,7 +87,9 @@ namespace AddressBook.Models
 			return newEmailAddress;
 		}
 
-		// Edit
+		/// <summary>
+		/// Interactively modifies an email address.
+		/// </summary>
 		public void Edit()
 		{
 			bool editType = Functions.InputStartsWith("Edit email address type? (y/N) ", "y");

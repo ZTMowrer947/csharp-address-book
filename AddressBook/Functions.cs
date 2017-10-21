@@ -71,8 +71,14 @@ namespace AddressBook
 			return ReadLine(prompt).ToLower().StartsWith(start);
 		}
 
+		/// <summary>
+		/// Static function class relating to the main menu.
+		/// </summary>
 		public static class Menu
 		{
+			/// <summary>
+			/// Shows the commands used on the main menu.
+			/// </summary>
 			public static void ShowHelp()
 			{
 				Dictionary<string, string> helpItems = new Dictionary<string, string>
@@ -98,6 +104,10 @@ namespace AddressBook
 				Console.WriteLine();
 			}
 
+			/// <summary>
+			/// Creates and adds a new contact to the specified set of contacts.
+			/// </summary>
+			/// <param name="contactSet">The set of contacts to add the new contact to.</param>
 			public static void AddNewContact(ref HashSet<Contact> contactSet)
 			{
 				Console.Clear();
@@ -119,6 +129,10 @@ namespace AddressBook
 				}
 			}
 
+			/// <summary>
+			/// Prints out all the contacts in the specified set.
+			/// </summary>
+			/// <param name="contacts">The set of contacts to print.</param>
 			public static void PrintContacts(HashSet<Contact> contacts)
 			{
 				Console.WriteLine("Contacts:\n");
@@ -133,6 +147,11 @@ namespace AddressBook
 				}
 			}
 
+			/// <summary>
+			/// Searches for contacts and returns the results.
+			/// </summary>
+			/// <param name="contacts">The set of contacts to search through.</param>
+			/// <returns>The search results.</returns>
 			public static IEnumerable<Contact> SearchForContacts(HashSet<Contact> contacts) {
 				string searchBy = ReadLine("Search By: (Name/address/phone number/fax number/email address) ");
 				string searchFor = ReadLine("Search For: ");
@@ -225,6 +244,10 @@ namespace AddressBook
 				return results;
 			}
 
+			/// <summary>
+			/// Searches for and edits contacts.
+			/// </summary>
+			/// <param name="contacts">The set of contacts to search through and edit.</param>
 			public static void EditContact(ref HashSet<Contact> contacts)
 			{
 				if (contacts.Count > 0)
@@ -291,6 +314,10 @@ namespace AddressBook
 				}
 			}
 
+			/// <summary>
+			/// Searches for and deletes contacts.
+			/// </summary>
+			/// <param name="contacts">The set of contacts to search through and delete.</param>
 			public static void DeleteContact(ref HashSet<Contact> contacts)
 			{
 				if (contacts.Count > 0)
@@ -340,6 +367,10 @@ namespace AddressBook
 				}
 			}
 
+			/// <summary>
+			/// Saves the specified set of contacts as JSON and exits the application.
+			/// </summary>
+			/// <param name="contacts">The set of contacts to save.</param>
 			public static void SaveContactsAndExit(HashSet<Contact> contacts)
 			{
 				Console.WriteLine("Saving Contacts...");
@@ -358,6 +389,10 @@ namespace AddressBook
 				}
 			}
 
+			/// <summary>
+			/// Prompts the user for a command and executes the respective function.
+			/// </summary>
+			/// <param name="contacts">The set of contacts to use.</param>
 			public static void ExecuteOptionChoice(ref HashSet<Contact> contacts)
 			{
 				Console.Write("> ");
@@ -417,8 +452,16 @@ namespace AddressBook
 			}
 		}
 
+		/// <summary>
+		/// Static function class containing functions for Reading/Writing JSON data.
+		/// </summary>
 		public static class JSONHandling
 		{
+			/// <summary>
+			/// Reads the JSON file at the specified path and returns the deserialized set of contacts.
+			/// </summary>
+			/// <param name="filePath">The path of the JSON file to read.</param>
+			/// <returns>The deserialized set of contacts.</returns>
 			public static HashSet<Contact> ReadContactsFromFile(string filePath)
 			{
 				JsonSerializer serializer = new JsonSerializer();
@@ -430,6 +473,11 @@ namespace AddressBook
 				}
 			}
 
+			/// <summary>
+			/// Writes the specified set of contacts to the JSON file at the specified path.
+			/// </summary>
+			/// <param name="filePath">The path of the JSON file to write to.</param>
+			/// <param name="contacts">The set of contacts to write to the JSON file.</param>
 			public static void WriteContactsToFile(string filePath, HashSet<Contact> contacts)
 			{
 				JsonSerializer serializer = new JsonSerializer();

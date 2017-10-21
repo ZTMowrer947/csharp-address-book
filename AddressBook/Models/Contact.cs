@@ -55,6 +55,10 @@ namespace AddressBook.Models
 			EmailAddresses = new HashSet<EmailAddress>();
 		}
 
+		/// <summary>
+		/// Interactively creates a new contact.
+		/// </summary>
+		/// <returns>The new contact.</returns>
 		public static Contact Create()
 		{
 			string firstName = Functions.GetAndValidateInput("First Name", RegexPatterns.Name);
@@ -169,7 +173,9 @@ namespace AddressBook.Models
 			return newContact;
 		}
 
-		// Edit
+		/// <summary>
+		/// Interactively modifies a contact.
+		/// </summary>
 		public void Edit()
 		{
 			bool editName = Functions.InputStartsWith("Edit name? (y/N) ", "y");

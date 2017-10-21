@@ -45,6 +45,10 @@ namespace AddressBook.Models
 			PostalCode = postalCode;
 		}
 
+		/// <summary>
+		/// Interactively creates a new address.
+		/// </summary>
+		/// <returns>The new address.</returns>
 		public static Address Create()
 		{
 			string typeOfAddressAsString = Functions.ReadLine("Type: (Home/work/other) ").ToLower();
@@ -81,7 +85,9 @@ namespace AddressBook.Models
 			return newAddress;
 		}
 
-		// Edit
+		/// <summary>
+		/// Interactively modifies an address.
+		/// </summary>
 		public void Edit()
 		{
 			bool editType = Functions.InputStartsWith("Edit address type? (y/N) ", "y");
