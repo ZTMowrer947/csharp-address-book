@@ -234,7 +234,7 @@ namespace AddressBook
 
 					if (searchResults.Count() == 1)
 					{
-						Console.Write("Only one result found, so that will be used.");
+						Console.WriteLine("Only one result found, so that will be used.");
 						contactToEdit = searchResults.First();
 					}
 					else if (searchResults.Count() > 1)
@@ -267,7 +267,7 @@ namespace AddressBook
 						Console.WriteLine("Editing this contact:\n");
 						Console.WriteLine(contactToEdit);
 
-						Console.WriteLine("\n\nPress any key to edit...");
+						Console.Write("\n\nPress any key to edit...");
 						Console.ReadKey();
 
 						Console.WriteLine("Deleting old contact...");

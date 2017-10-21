@@ -188,10 +188,11 @@ namespace AddressBook.Models
 				foreach (Address address in Addresses)
 				{
 					Console.WriteLine(address);
-					bool editAddress = Functions.InputStartsWith("Edit this address? (y/N) ", "y");
+					bool editAddress = Functions.InputStartsWith("\nEdit this address? (y/N) ", "y");
 
 					if (editAddress)
 					{
+						Console.WriteLine();
 						address.Edit();
 					}
 				}
@@ -205,10 +206,11 @@ namespace AddressBook.Models
 				foreach (PhoneNumber phoneNumber in PhoneNumbers)
 				{
 					Console.WriteLine(phoneNumber);
-					bool editPhoneNumber = Functions.InputStartsWith("Edit this phone number? (y/N) ", "y");
+					bool editPhoneNumber = Functions.InputStartsWith("\nEdit this phone number? (y/N) ", "y");
 
 					if (editPhoneNumber)
 					{
+						Console.WriteLine();
 						phoneNumber.Edit();
 					}
 				}
@@ -222,10 +224,11 @@ namespace AddressBook.Models
 				foreach (FaxNumber faxNumber in FaxNumbers)
 				{
 					Console.WriteLine(faxNumber);
-					bool editFaxNumber = Functions.InputStartsWith("Edit this fax number? (y/N) ", "y");
+					bool editFaxNumber = Functions.InputStartsWith("\nEdit this fax number? (y/N) ", "y");
 
 					if (editFaxNumber)
 					{
+						Console.WriteLine();
 						faxNumber.Edit();
 					}
 				}
@@ -239,7 +242,7 @@ namespace AddressBook.Models
 				foreach (EmailAddress emailAddress in EmailAddresses)
 				{
 					Console.WriteLine(emailAddress);
-					bool editEmailAddress = Functions.InputStartsWith("Edit this email address? (y/N) ", "y");
+					bool editEmailAddress = Functions.InputStartsWith("\nEdit this email address? (y/N) ", "y");
 
 					if (editEmailAddress)
 					{
