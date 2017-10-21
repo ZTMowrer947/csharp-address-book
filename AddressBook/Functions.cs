@@ -234,7 +234,7 @@ namespace AddressBook
 
 					if (searchResults.Count() == 1)
 					{
-						Console.WriteLine("Only one result found, so that will be used.");
+						Console.WriteLine("\nOnly one result found, so that will be used.");
 						contactToEdit = searchResults.First();
 					}
 					else if (searchResults.Count() > 1)
@@ -270,7 +270,7 @@ namespace AddressBook
 						Console.Write("\n\nPress any key to edit...");
 						Console.ReadKey();
 
-						Console.WriteLine("Deleting old contact...");
+						Console.WriteLine("\nDeleting old contact...");
 						contacts.Remove(contactToEdit);
 
 						Console.WriteLine("\nDeleted old contact, editing selected contact...");
@@ -293,43 +293,50 @@ namespace AddressBook
 
 			public static void DeleteContact(ref HashSet<Contact> contacts)
 			{
-				IEnumerable<Contact> searchResults = SearchForContacts(contacts);
-				Contact contactToDelete = new Contact(" ");
+				if (contacts.Count > 0)
+				{
+					IEnumerable<Contact> searchResults = SearchForContacts(contacts);
+					Contact contactToDelete = new Contact(" ");
 
-				if (searchResults.Count() == 1)
-				{
-					contactToDelete = searchResults.First();
-				}
-				else if (searchResults.Count() > 1)
-				{
-					Console.WriteLine("Multiple search results found. Looping over them all. Select the one you want to delete.");
-					foreach (Contact contact in searchResults)
+					if (searchResults.Count() == 1)
 					{
-						Console.WriteLine(contact);
-						bool deleteThisContact = !InputStartsWith("Delete this contact? (Y/n)", "n");
-
-						if (deleteThisContact)
+						contactToDelete = searchResults.First();
+					}
+					else if (searchResults.Count() > 1)
+					{
+						Console.WriteLine("Multiple search results found. Looping over them all. Select the one you want to delete.");
+						foreach (Contact contact in searchResults)
 						{
-							contactToDelete = contact;
-							break;
+							Console.WriteLine(contact);
+							bool deleteThisContact = !InputStartsWith("Delete this contact? (Y/n)", "n");
+
+							if (deleteThisContact)
+							{
+								contactToDelete = contact;
+								break;
+							}
+						}
+
+						if (contactToDelete == new Contact(" "))
+						{
+							Console.WriteLine("No contact was selected to be deleted, so nothing will be deleted");
 						}
 					}
-
-					if (contactToDelete == new Contact(" "))
+					else
 					{
-						Console.WriteLine("No contact was selected to be deleted, so nothing will be deleted");
+						Console.WriteLine("Search results are empty, nothing to delete");
+					}
+
+					if (contactToDelete != new Contact(" "))
+					{
+						Console.WriteLine("Deleting Contact...");
+						contacts.Remove(contactToDelete);
+						Console.WriteLine("Contact Deleted.");
 					}
 				}
 				else
 				{
-					Console.WriteLine("Search results are empty, nothing to delete");
-				}
-
-				if (contactToDelete != new Contact(" "))
-				{
-					Console.WriteLine("Deleting Contact...");
-					contacts.Remove(contactToDelete);
-					Console.WriteLine("Contact Deleted.");
+					Console.WriteLine("No contacts");
 				}
 			}
 
