@@ -180,6 +180,8 @@ namespace AddressBook.Models
 				Name = string.Format("{0} {1}", firstName, lastName);
 			}
 
+			Console.WriteLine("\n");
+
 			bool editAddresses = Functions.InputStartsWith("Edit addresses? (y/N) ", "y");
 			if (editAddresses)
 			{
@@ -194,6 +196,8 @@ namespace AddressBook.Models
 					}
 				}
 			}
+
+			Console.WriteLine("\n");
 
 			bool editPhoneNumbers = Functions.InputStartsWith("Edit phone numbers? (y/N) ", "y");
 			if (editPhoneNumbers)
@@ -210,6 +214,8 @@ namespace AddressBook.Models
 				}
 			}
 
+			Console.WriteLine("\n");
+
 			bool editFaxNumbers = Functions.InputStartsWith("Edit fax numbers? (y/N) ", "y");
 			if (editAddresses)
 			{
@@ -225,8 +231,10 @@ namespace AddressBook.Models
 				}
 			}
 
+			Console.WriteLine("\n");
+
 			bool editEmailAddresses = Functions.InputStartsWith("Edit email addresses? (y/N) ", "y");
-			if (editAddresses)
+			if (editEmailAddresses)
 			{
 				foreach (EmailAddress emailAddress in EmailAddresses)
 				{

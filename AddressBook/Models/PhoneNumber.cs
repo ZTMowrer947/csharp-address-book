@@ -106,6 +106,8 @@ namespace AddressBook.Models
 				}
 			}
 
+			Console.WriteLine();
+
 			bool editNumber = Functions.InputStartsWith("Edit number? (y/N) ", "y");
 			if (editNumber)
 			{

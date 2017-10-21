@@ -118,25 +118,33 @@ namespace AddressBook.Models
 
 			}
 
-			bool editStreetAddress = Functions.InputStartsWith("Edit address type? (y/N) ", "y");
+			Console.WriteLine();
+
+			bool editStreetAddress = Functions.InputStartsWith("Edit street address? (y/N) ", "y");
 			if (editStreetAddress)
 			{
 				StreetAddress = Functions.GetAndValidateInput("Street Address", RegexPatterns.Address["Street Address"]);
 			}
 
-			bool editCity = Functions.InputStartsWith("Edit address type? (y/N) ", "y");
+			Console.WriteLine();
+
+			bool editCity = Functions.InputStartsWith("Edit city? (y/N) ", "y");
 			if (editCity)
 			{
 				City = Functions.GetAndValidateInput("City", RegexPatterns.Address["City"]);
 			}
 
-			bool editState = Functions.InputStartsWith("Edit address type? (y/N) ", "y");
+			Console.WriteLine();
+
+			bool editState = Functions.InputStartsWith("Edit state? (y/N) ", "y");
 			if (editState)
 			{
 				State = Functions.GetAndValidateInput("State", RegexPatterns.Address["State"]);
 			}
 
-			bool editPostalCode = Functions.InputStartsWith("Edit address type? (y/N) ", "y");
+			Console.WriteLine();
+
+			bool editPostalCode = Functions.InputStartsWith("Edit postal code? (y/N) ", "y");
 			if (editPostalCode)
 			{
 				PostalCode = Functions.GetAndValidateInput("Postal Code", RegexPatterns.Address["Postal Code"]);

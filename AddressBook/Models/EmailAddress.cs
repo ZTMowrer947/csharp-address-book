@@ -123,6 +123,8 @@ namespace AddressBook.Models
 				TypeOfEmailAddress = typeOfEmailAddress;
 			}
 
+			Console.WriteLine();
+
 			bool editAddress = Functions.InputStartsWith("Edit address? (y/N) ", "y");
 			if (editAddress)
 			{
