@@ -169,6 +169,79 @@ namespace AddressBook.Models
 			return newContact;
 		}
 
+		// Edit
+		public void Edit()
+		{
+			bool editName = Functions.InputStartsWith("Edit name? (y/N) ", "y");
+			if (editName)
+			{
+				string firstName = Functions.GetAndValidateInput("First Name", RegexPatterns.Name);
+				string lastName = Functions.GetAndValidateInput("Last Name", RegexPatterns.Name);
+				Name = string.Format("{0} {1}", firstName, lastName);
+			}
+
+			bool editAddresses = Functions.InputStartsWith("Edit addresses? (y/N) ", "y");
+			if (editAddresses)
+			{
+				foreach (Address address in Addresses)
+				{
+					Console.WriteLine(address);
+					bool editAddress = Functions.InputStartsWith("Edit this address? (y/N) ", "y");
+
+					if (editAddress)
+					{
+						address.Edit();
+					}
+				}
+			}
+
+			bool editPhoneNumbers = Functions.InputStartsWith("Edit phone numbers? (y/N) ", "y");
+			if (editPhoneNumbers)
+			{
+				foreach (PhoneNumber phoneNumber in PhoneNumbers)
+				{
+					Console.WriteLine(phoneNumber);
+					bool editPhoneNumber = Functions.InputStartsWith("Edit this phone number? (y/N) ", "y");
+
+					if (editPhoneNumber)
+					{
+						phoneNumber.Edit();
+					}
+				}
+			}
+
+			bool editFaxNumbers = Functions.InputStartsWith("Edit fax numbers? (y/N) ", "y");
+			if (editAddresses)
+			{
+				foreach (FaxNumber faxNumber in FaxNumbers)
+				{
+					Console.WriteLine(faxNumber);
+					bool editFaxNumber = Functions.InputStartsWith("Edit this fax number? (y/N) ", "y");
+
+					if (editFaxNumber)
+					{
+						faxNumber.Edit();
+					}
+				}
+			}
+
+			bool editEmailAddresses = Functions.InputStartsWith("Edit email addresses? (y/N) ", "y");
+			if (editAddresses)
+			{
+				foreach (EmailAddress emailAddress in EmailAddresses)
+				{
+					Console.WriteLine(emailAddress);
+					bool editEmailAddress = Functions.InputStartsWith("Edit this email address? (y/N) ", "y");
+
+					if (editEmailAddress)
+					{
+						emailAddress.Edit();
+					}
+				}
+			}
+
+		}
+
 		// Overrides
 		public override string ToString()
 		{

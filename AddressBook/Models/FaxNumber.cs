@@ -21,6 +21,12 @@ namespace AddressBook.Models
 			return newFaxNumber;
 		}
 
+		// Edit
+		public override void Edit()
+		{
+			Number = Functions.GetAndValidateInput("Fax Number", RegexPatterns.PhoneNumber);
+		}
+
 		// Override
 		public override string ToString()
 		{

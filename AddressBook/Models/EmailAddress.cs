@@ -83,6 +83,75 @@ namespace AddressBook.Models
 			return newEmailAddress;
 		}
 
+		// Edit
+		public void Edit()
+		{
+			bool editType = Functions.InputStartsWith("Edit email address type? (y/N) ", "y");
+			if (editType)
+			{
+				string typeOfEmailAddressAsString = Functions.ReadLine("Type: (Personal/work/school/other) ").ToLower();
+				char firstLetter = 'h';
+				EmailAddressType typeOfEmailAddress = EmailAddressType.Personal;
+
+				try
+				{
+					firstLetter = typeOfEmailAddressAsString.ToCharArray()[0];
+					switch (firstLetter)
+					{
+						case 'w':
+							typeOfEmailAddress = EmailAddressType.Work;
+							break;
+
+						case 's':
+							typeOfEmailAddress = EmailAddressType.School;
+							break;
+
+						case 'o':
+							typeOfEmailAddress = EmailAddressType.Other;
+							break;
+
+						default:
+							Console.WriteLine("Keeping default of Personal");
+							break;
+					}
+				}
+				catch (IndexOutOfRangeException)
+				{
+					Console.WriteLine("Keeping default of Personal");
+				}
+
+				TypeOfEmailAddress = typeOfEmailAddress;
+			}
+
+			bool editAddress = Functions.InputStartsWith("Edit address? (y/N) ", "y");
+			if (editAddress)
+			{
+				string address = "";
+
+				while (true)
+				{
+					string emailAddressString = Functions.ReadLine("Email Address: ");
+
+					try
+					{
+						MailAddress mailAddress = new MailAddress(emailAddressString);
+					}
+					catch (FormatException)
+					{
+						Console.Write("Invalid email address. Press any key to retry...");
+						Console.ReadKey();
+						Console.Clear();
+						continue;
+					}
+
+					address = emailAddressString;
+					break;
+				}
+
+				Address = address;
+			}
+		}
+
 		// Overrides
 		public override string ToString()
 		{

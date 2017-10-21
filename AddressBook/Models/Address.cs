@@ -81,6 +81,68 @@ namespace AddressBook.Models
 			return newAddress;
 		}
 
+		// Edit
+		public void Edit()
+		{
+			bool editType = Functions.InputStartsWith("Edit address type? (y/N) ", "y");
+			if (editType)
+			{
+				string typeOfAddressAsString = Functions.ReadLine("Type: (Home/work/other) ").ToLower();
+				char firstLetter = 'h';
+				AddressType typeOfAddress = AddressType.Home;
+
+				try
+				{
+					firstLetter = typeOfAddressAsString.ToCharArray()[0];
+					switch (firstLetter)
+					{
+						case 'w':
+							typeOfAddress = AddressType.Work;
+							break;
+
+						case 'o':
+							typeOfAddress = AddressType.Other;
+							break;
+
+						default:
+							Console.WriteLine("Keeping default of Home");
+							break;
+					}
+				}
+				catch (IndexOutOfRangeException)
+				{
+					Console.WriteLine("Keeping default of Home");
+				}
+
+				TypeOfAddress = typeOfAddress;
+
+			}
+
+			bool editStreetAddress = Functions.InputStartsWith("Edit address type? (y/N) ", "y");
+			if (editStreetAddress)
+			{
+				StreetAddress = Functions.GetAndValidateInput("Street Address", RegexPatterns.Address["Street Address"]);
+			}
+
+			bool editCity = Functions.InputStartsWith("Edit address type? (y/N) ", "y");
+			if (editCity)
+			{
+				City = Functions.GetAndValidateInput("City", RegexPatterns.Address["City"]);
+			}
+
+			bool editState = Functions.InputStartsWith("Edit address type? (y/N) ", "y");
+			if (editState)
+			{
+				State = Functions.GetAndValidateInput("State", RegexPatterns.Address["State"]);
+			}
+
+			bool editPostalCode = Functions.InputStartsWith("Edit address type? (y/N) ", "y");
+			if (editPostalCode)
+			{
+				PostalCode = Functions.GetAndValidateInput("Postal Code", RegexPatterns.Address["Postal Code"]);
+			}
+		}
+
 		// Overrides
 		public override string ToString()
 		{

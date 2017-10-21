@@ -66,6 +66,53 @@ namespace AddressBook.Models
 			return newPhoneNumber;
 		}
 
+		// Edit
+		public virtual void Edit()
+		{
+			bool editType = Functions.InputStartsWith("Edit phone number type? (y/N) ", "y");
+			if (editType)
+			{
+				string typeOfPhoneNumberAsString = Functions.ReadLine("Type: (Home/work/mobile/other) ").ToLower();
+				char firstLetter = 'h';
+				PhoneNumberType typeOfPhoneNumber = PhoneNumberType.Home;
+
+				try
+				{
+					firstLetter = typeOfPhoneNumberAsString.ToCharArray()[0];
+					switch (firstLetter)
+					{
+						case 'w':
+							typeOfPhoneNumber = PhoneNumberType.Work;
+							break;
+
+						case 'm':
+							typeOfPhoneNumber = PhoneNumberType.Mobile;
+							break;
+
+						case 'o':
+							typeOfPhoneNumber = PhoneNumberType.Other;
+							break;
+
+						default:
+							Console.WriteLine("Keeping default of Home");
+							break;
+					}
+
+					TypeOfPhoneNumber = typeOfPhoneNumber;
+				}
+				catch (IndexOutOfRangeException)
+				{
+					Console.WriteLine("Keeping default of Home");
+				}
+			}
+
+			bool editNumber = Functions.InputStartsWith("Edit number? (y/N) ", "y");
+			if (editNumber)
+			{
+				Number = Functions.GetAndValidateInput("Phone Number", RegexPatterns.PhoneNumber);
+			}
+		}
+
 		// Overrides
 		public override string ToString()
 		{
