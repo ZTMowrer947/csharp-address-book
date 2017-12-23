@@ -1,4 +1,5 @@
 ﻿using AddressBook.Models.Enums;
+using AddressBook.Functions;
 using Newtonsoft.Json;
 using System;
 using System.Net.Mail;
@@ -37,7 +38,7 @@ namespace AddressBook.Models
 		/// <returns>The new email address.</returns>
 		public static EmailAddress Create()
 		{
-			string typeOfEmailAddressAsString = Functions.ReadLine("Type: (Personal/work/school/other) ").ToLower();
+			string typeOfEmailAddressAsString = MainFunctions.ReadLine("Type: (Personal/work/school/other) ").ToLower();
 			char firstLetter = 'h';
 			EmailAddressType typeOfEmailAddress = EmailAddressType.Personal;
 
@@ -68,7 +69,7 @@ namespace AddressBook.Models
 			string address = "";
 
 			while (true) {
-				string emailAddressString = Functions.ReadLine("Email Address: ");
+				string emailAddressString = MainFunctions.ReadLine("Email Address: ");
 
 				try {
 					MailAddress mailAddress = new MailAddress(emailAddressString);
@@ -92,10 +93,10 @@ namespace AddressBook.Models
 		/// </summary>
 		public void Edit()
 		{
-			bool editType = Functions.InputStartsWith("Edit email address type? (y/N) ", "y");
+			bool editType = MainFunctions.InputStartsWith("Edit email address type? (y/N) ", "y");
 			if (editType)
 			{
-				string typeOfEmailAddressAsString = Functions.ReadLine("Type: (Personal/work/school/other) ").ToLower();
+				string typeOfEmailAddressAsString = MainFunctions.ReadLine("Type: (Personal/work/school/other) ").ToLower();
 				char firstLetter = 'h';
 				EmailAddressType typeOfEmailAddress = EmailAddressType.Personal;
 
@@ -131,14 +132,14 @@ namespace AddressBook.Models
 
 			Console.WriteLine();
 
-			bool editAddress = Functions.InputStartsWith("Edit address? (y/N) ", "y");
+			bool editAddress = MainFunctions.InputStartsWith("Edit address? (y/N) ", "y");
 			if (editAddress)
 			{
 				string address = "";
 
 				while (true)
 				{
-					string emailAddressString = Functions.ReadLine("Email Address: ");
+					string emailAddressString = MainFunctions.ReadLine("Email Address: ");
 
 					try
 					{

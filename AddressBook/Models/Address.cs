@@ -1,4 +1,5 @@
 ﻿using AddressBook.Models.Enums;
+using AddressBook.Functions;
 using Newtonsoft.Json;
 using System;
 
@@ -51,7 +52,7 @@ namespace AddressBook.Models
 		/// <returns>The new address.</returns>
 		public static Address Create()
 		{
-			string typeOfAddressAsString = Functions.ReadLine("Type: (Home/work/other) ").ToLower();
+			string typeOfAddressAsString = MainFunctions.ReadLine("Type: (Home/work/other) ").ToLower();
 			char firstLetter = 'h';
 			AddressType typeOfAddress = AddressType.Home;
 
@@ -76,10 +77,10 @@ namespace AddressBook.Models
 				Console.WriteLine("Keeping default of Home");
 			}
 
-			string streetAddress = Functions.GetAndValidateInput("Street Address", RegexPatterns.Address["Street Address"]);
-			string city = Functions.GetAndValidateInput("City", RegexPatterns.Address["City"]);
-			string state = Functions.GetAndValidateInput("State", RegexPatterns.Address["State"]);
-			string postalCode = Functions.GetAndValidateInput("Postal Code", RegexPatterns.Address["Postal Code"]);
+			string streetAddress = MainFunctions.GetAndValidateInput("Street Address", RegexPatterns.Address["Street Address"]);
+			string city = MainFunctions.GetAndValidateInput("City", RegexPatterns.Address["City"]);
+			string state = MainFunctions.GetAndValidateInput("State", RegexPatterns.Address["State"]);
+			string postalCode = MainFunctions.GetAndValidateInput("Postal Code", RegexPatterns.Address["Postal Code"]);
 
 			Address newAddress = typeOfAddress == AddressType.Home ? new Address(streetAddress, city, state, postalCode) : new Address(typeOfAddress, streetAddress, city, state, postalCode);
 			return newAddress;
@@ -90,10 +91,10 @@ namespace AddressBook.Models
 		/// </summary>
 		public void Edit()
 		{
-			bool editType = Functions.InputStartsWith("Edit address type? (y/N) ", "y");
+			bool editType = MainFunctions.InputStartsWith("Edit address type? (y/N) ", "y");
 			if (editType)
 			{
-				string typeOfAddressAsString = Functions.ReadLine("Type: (Home/work/other) ").ToLower();
+				string typeOfAddressAsString = MainFunctions.ReadLine("Type: (Home/work/other) ").ToLower();
 				char firstLetter = 'h';
 				AddressType typeOfAddress = AddressType.Home;
 
@@ -126,34 +127,34 @@ namespace AddressBook.Models
 
 			Console.WriteLine();
 
-			bool editStreetAddress = Functions.InputStartsWith("Edit street address? (y/N) ", "y");
+			bool editStreetAddress = MainFunctions.InputStartsWith("Edit street address? (y/N) ", "y");
 			if (editStreetAddress)
 			{
-				StreetAddress = Functions.GetAndValidateInput("Street Address", RegexPatterns.Address["Street Address"]);
+				StreetAddress = MainFunctions.GetAndValidateInput("Street Address", RegexPatterns.Address["Street Address"]);
 			}
 
 			Console.WriteLine();
 
-			bool editCity = Functions.InputStartsWith("Edit city? (y/N) ", "y");
+			bool editCity = MainFunctions.InputStartsWith("Edit city? (y/N) ", "y");
 			if (editCity)
 			{
-				City = Functions.GetAndValidateInput("City", RegexPatterns.Address["City"]);
+				City = MainFunctions.GetAndValidateInput("City", RegexPatterns.Address["City"]);
 			}
 
 			Console.WriteLine();
 
-			bool editState = Functions.InputStartsWith("Edit state? (y/N) ", "y");
+			bool editState = MainFunctions.InputStartsWith("Edit state? (y/N) ", "y");
 			if (editState)
 			{
-				State = Functions.GetAndValidateInput("State", RegexPatterns.Address["State"]);
+				State = MainFunctions.GetAndValidateInput("State", RegexPatterns.Address["State"]);
 			}
 
 			Console.WriteLine();
 
-			bool editPostalCode = Functions.InputStartsWith("Edit postal code? (y/N) ", "y");
+			bool editPostalCode = MainFunctions.InputStartsWith("Edit postal code? (y/N) ", "y");
 			if (editPostalCode)
 			{
-				PostalCode = Functions.GetAndValidateInput("Postal Code", RegexPatterns.Address["Postal Code"]);
+				PostalCode = MainFunctions.GetAndValidateInput("Postal Code", RegexPatterns.Address["Postal Code"]);
 			}
 		}
 

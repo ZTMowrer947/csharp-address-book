@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AddressBook.Functions;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using System;
 
@@ -61,13 +62,13 @@ namespace AddressBook.Models
 		/// <returns>The new contact.</returns>
 		public static Contact Create()
 		{
-			string firstName = Functions.GetAndValidateInput("First Name", RegexPatterns.Name);
-			string lastName = Functions.GetAndValidateInput("Last Name", RegexPatterns.Name);
+			string firstName = MainFunctions.GetAndValidateInput("First Name", RegexPatterns.Name);
+			string lastName = MainFunctions.GetAndValidateInput("Last Name", RegexPatterns.Name);
 			string fullName = string.Format("{0} {1}", firstName, lastName);
 
 			Contact newContact = new Contact(fullName);
 
-			bool addAddresses = !Functions.InputStartsWith("Add addresses? (Y/n) ", "n");
+			bool addAddresses = !MainFunctions.InputStartsWith("Add addresses? (Y/n) ", "n");
 			if (addAddresses) {
 				while (true) {
 					Console.Clear();
@@ -75,7 +76,7 @@ namespace AddressBook.Models
 					Address newAddress = Address.Create();
 					Console.WriteLine(newAddress);
 
-					bool addressOK = !Functions.InputStartsWith("Is this address OK? (Y/n) ", "n");
+					bool addressOK = !MainFunctions.InputStartsWith("Is this address OK? (Y/n) ", "n");
 
 					if (addressOK) {
 						newContact.Addresses.Add(newAddress);
@@ -84,12 +85,12 @@ namespace AddressBook.Models
 						Console.WriteLine("Discarded new address.");
 					}
 
-					bool addAnother = !Functions.InputStartsWith("Add another? (Y/n) ", "n");
+					bool addAnother = !MainFunctions.InputStartsWith("Add another? (Y/n) ", "n");
 					if (!addAnother) break;
 				}
 			}
 
-			bool addPhoneNumbers = !Functions.InputStartsWith("Add phone numbers? (Y/n) ", "n");
+			bool addPhoneNumbers = !MainFunctions.InputStartsWith("Add phone numbers? (Y/n) ", "n");
 			if (addPhoneNumbers)
 			{
 				while (true)
@@ -99,7 +100,7 @@ namespace AddressBook.Models
 					PhoneNumber newPhoneNumber = PhoneNumber.Create();
 					Console.WriteLine(newPhoneNumber);
 
-					bool addressOK = !Functions.InputStartsWith("Is this phone number OK? (Y/n) ", "n");
+					bool addressOK = !MainFunctions.InputStartsWith("Is this phone number OK? (Y/n) ", "n");
 
 					if (addressOK)
 					{
@@ -111,12 +112,12 @@ namespace AddressBook.Models
 						Console.WriteLine("Discarded new phone number.");
 					}
 
-					bool addAnother = !Functions.InputStartsWith("Add another? (Y/n) ", "n");
+					bool addAnother = !MainFunctions.InputStartsWith("Add another? (Y/n) ", "n");
 					if (!addAnother) break;
 				}
 			}
 
-			bool addFaxNumbers = !Functions.InputStartsWith("Add fax numbers? (Y/n) ", "n");
+			bool addFaxNumbers = !MainFunctions.InputStartsWith("Add fax numbers? (Y/n) ", "n");
 			if (addFaxNumbers)
 			{
 				while (true)
@@ -126,7 +127,7 @@ namespace AddressBook.Models
 					FaxNumber newFaxNumber = FaxNumber.Create();
 					Console.WriteLine(newFaxNumber);
 
-					bool addressOK = !Functions.InputStartsWith("Is this fax number OK? (Y/n) ", "n");
+					bool addressOK = !MainFunctions.InputStartsWith("Is this fax number OK? (Y/n) ", "n");
 
 					if (addressOK)
 					{
@@ -138,12 +139,12 @@ namespace AddressBook.Models
 						Console.WriteLine("Discarded new fax number.");
 					}
 
-					bool addAnother = !Functions.InputStartsWith("Add another? (Y/n) ", "n");
+					bool addAnother = !MainFunctions.InputStartsWith("Add another? (Y/n) ", "n");
 					if (!addAnother) break;
 				}
 			}
 
-			bool addEmailAddresses = !Functions.InputStartsWith("Add email addresses? (Y/n) ", "n");
+			bool addEmailAddresses = !MainFunctions.InputStartsWith("Add email addresses? (Y/n) ", "n");
 			if (addEmailAddresses)
 			{
 				while (true)
@@ -153,7 +154,7 @@ namespace AddressBook.Models
 					EmailAddress newEmailAddress = EmailAddress.Create();
 					Console.WriteLine(newEmailAddress);
 
-					bool emailAddressOK = !Functions.InputStartsWith("Is this email address OK? (Y/n) ", "n");
+					bool emailAddressOK = !MainFunctions.InputStartsWith("Is this email address OK? (Y/n) ", "n");
 
 					if (emailAddressOK)
 					{
@@ -165,7 +166,7 @@ namespace AddressBook.Models
 						Console.WriteLine("Discarded new email address.");
 					}
 
-					bool addAnother = !Functions.InputStartsWith("Add another? (Y/n) ", "n");
+					bool addAnother = !MainFunctions.InputStartsWith("Add another? (Y/n) ", "n");
 					if (!addAnother) break;
 				}
 			}
@@ -178,23 +179,23 @@ namespace AddressBook.Models
 		/// </summary>
 		public void Edit()
 		{
-			bool editName = Functions.InputStartsWith("Edit name? (y/N) ", "y");
+			bool editName = MainFunctions.InputStartsWith("Edit name? (y/N) ", "y");
 			if (editName)
 			{
-				string firstName = Functions.GetAndValidateInput("First Name", RegexPatterns.Name);
-				string lastName = Functions.GetAndValidateInput("Last Name", RegexPatterns.Name);
+				string firstName = MainFunctions.GetAndValidateInput("First Name", RegexPatterns.Name);
+				string lastName = MainFunctions.GetAndValidateInput("Last Name", RegexPatterns.Name);
 				Name = string.Format("{0} {1}", firstName, lastName);
 			}
 
 			Console.WriteLine("\n");
 
-			bool editAddresses = Functions.InputStartsWith("Edit addresses? (y/N) ", "y");
+			bool editAddresses = MainFunctions.InputStartsWith("Edit addresses? (y/N) ", "y");
 			if (editAddresses)
 			{
 				foreach (Address address in Addresses)
 				{
 					Console.WriteLine(address);
-					bool editAddress = Functions.InputStartsWith("\nEdit this address? (y/N) ", "y");
+					bool editAddress = MainFunctions.InputStartsWith("\nEdit this address? (y/N) ", "y");
 
 					if (editAddress)
 					{
@@ -206,13 +207,13 @@ namespace AddressBook.Models
 
 			Console.WriteLine("\n");
 
-			bool editPhoneNumbers = Functions.InputStartsWith("Edit phone numbers? (y/N) ", "y");
+			bool editPhoneNumbers = MainFunctions.InputStartsWith("Edit phone numbers? (y/N) ", "y");
 			if (editPhoneNumbers)
 			{
 				foreach (PhoneNumber phoneNumber in PhoneNumbers)
 				{
 					Console.WriteLine(phoneNumber);
-					bool editPhoneNumber = Functions.InputStartsWith("\nEdit this phone number? (y/N) ", "y");
+					bool editPhoneNumber = MainFunctions.InputStartsWith("\nEdit this phone number? (y/N) ", "y");
 
 					if (editPhoneNumber)
 					{
@@ -224,13 +225,13 @@ namespace AddressBook.Models
 
 			Console.WriteLine("\n");
 
-			bool editFaxNumbers = Functions.InputStartsWith("Edit fax numbers? (y/N) ", "y");
+			bool editFaxNumbers = MainFunctions.InputStartsWith("Edit fax numbers? (y/N) ", "y");
 			if (editAddresses)
 			{
 				foreach (FaxNumber faxNumber in FaxNumbers)
 				{
 					Console.WriteLine(faxNumber);
-					bool editFaxNumber = Functions.InputStartsWith("\nEdit this fax number? (y/N) ", "y");
+					bool editFaxNumber = MainFunctions.InputStartsWith("\nEdit this fax number? (y/N) ", "y");
 
 					if (editFaxNumber)
 					{
@@ -242,13 +243,13 @@ namespace AddressBook.Models
 
 			Console.WriteLine("\n");
 
-			bool editEmailAddresses = Functions.InputStartsWith("Edit email addresses? (y/N) ", "y");
+			bool editEmailAddresses = MainFunctions.InputStartsWith("Edit email addresses? (y/N) ", "y");
 			if (editEmailAddresses)
 			{
 				foreach (EmailAddress emailAddress in EmailAddresses)
 				{
 					Console.WriteLine(emailAddress);
-					bool editEmailAddress = Functions.InputStartsWith("\nEdit this email address? (y/N) ", "y");
+					bool editEmailAddress = MainFunctions.InputStartsWith("\nEdit this email address? (y/N) ", "y");
 
 					if (editEmailAddress)
 					{

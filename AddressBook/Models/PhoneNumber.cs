@@ -1,4 +1,5 @@
 ﻿using AddressBook.Models.Enums;
+using AddressBook.Functions;
 using Newtonsoft.Json;
 using System;
 
@@ -36,7 +37,7 @@ namespace AddressBook.Models
 		/// <returns>The new phone number.</returns>
 		public static PhoneNumber Create()
 		{
-			string typeOfPhoneNumberAsString = Functions.ReadLine("Type: (Home/work/mobile/other) ").ToLower();
+			string typeOfPhoneNumberAsString = MainFunctions.ReadLine("Type: (Home/work/mobile/other) ").ToLower();
 			char firstLetter = 'h';
 			PhoneNumberType typeOfPhoneNumber = PhoneNumberType.Home;
 
@@ -64,7 +65,7 @@ namespace AddressBook.Models
 				Console.WriteLine("Keeping default of Home");
 			}
 
-			string number = Functions.GetAndValidateInput("Phone Number", RegexPatterns.PhoneNumber);
+			string number = MainFunctions.GetAndValidateInput("Phone Number", RegexPatterns.PhoneNumber);
 
 			PhoneNumber newPhoneNumber = new PhoneNumber(typeOfPhoneNumber, number);
 			return newPhoneNumber;
@@ -75,10 +76,10 @@ namespace AddressBook.Models
 		/// </summary>
 		public virtual void Edit()
 		{
-			bool editType = Functions.InputStartsWith("Edit phone number type? (y/N) ", "y");
+			bool editType = MainFunctions.InputStartsWith("Edit phone number type? (y/N) ", "y");
 			if (editType)
 			{
-				string typeOfPhoneNumberAsString = Functions.ReadLine("Type: (Home/work/mobile/other) ").ToLower();
+				string typeOfPhoneNumberAsString = MainFunctions.ReadLine("Type: (Home/work/mobile/other) ").ToLower();
 				char firstLetter = 'h';
 				PhoneNumberType typeOfPhoneNumber = PhoneNumberType.Home;
 
@@ -114,10 +115,10 @@ namespace AddressBook.Models
 
 			Console.WriteLine();
 
-			bool editNumber = Functions.InputStartsWith("Edit number? (y/N) ", "y");
+			bool editNumber = MainFunctions.InputStartsWith("Edit number? (y/N) ", "y");
 			if (editNumber)
 			{
-				Number = Functions.GetAndValidateInput("Phone Number", RegexPatterns.PhoneNumber);
+				Number = MainFunctions.GetAndValidateInput("Phone Number", RegexPatterns.PhoneNumber);
 			}
 		}
 

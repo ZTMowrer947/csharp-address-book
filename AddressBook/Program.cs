@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using AddressBook.Models;
+using AddressBook.Functions;
 
 namespace AddressBook
 {
@@ -29,7 +30,7 @@ namespace AddressBook
 				Console.WriteLine("File found. Reading contacts...");
 
 				try {
-					HashSet<Contact> jsonContacts = Functions.JSONHandling.ReadContactsFromFile(filePath);
+					HashSet<Contact> jsonContacts = JSONHandlingFunctions.ReadContactsFromFile(filePath);
 					Console.WriteLine("Contacts read successfully!\n");
 					if (jsonContacts != null) {
 						addressBook = jsonContacts;
@@ -50,11 +51,11 @@ namespace AddressBook
 
 			Console.WriteLine("Welcome to the Address Book!\n");
 
-			Functions.Menu.ShowHelp();
+			MenuFunctions.ShowHelp();
 			Console.WriteLine();
 
 			while (true) {
-				Functions.Menu.ExecuteOptionChoice(ref addressBook);
+				MenuFunctions.ExecuteOptionChoice(ref addressBook);
 
 				Console.Write("Press any key to return to the main menu...");
 				Console.ReadKey();

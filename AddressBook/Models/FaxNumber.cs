@@ -1,4 +1,5 @@
 ﻿using AddressBook.Models.Enums;
+using AddressBook.Functions;
 
 namespace AddressBook.Models
 {
@@ -19,7 +20,7 @@ namespace AddressBook.Models
 		/// <returns>The new fax number.</returns>
 		public new static FaxNumber Create()
 		{
-			string number = Functions.GetAndValidateInput("Fax Number", RegexPatterns.PhoneNumber);
+			string number = MainFunctions.GetAndValidateInput("Fax Number", RegexPatterns.PhoneNumber);
 
 			FaxNumber newFaxNumber = new FaxNumber(number);
 			return newFaxNumber;
@@ -30,7 +31,7 @@ namespace AddressBook.Models
 		/// </summary>
 		public override void Edit()
 		{
-			Number = Functions.GetAndValidateInput("Fax Number", RegexPatterns.PhoneNumber);
+			Number = MainFunctions.GetAndValidateInput("Fax Number", RegexPatterns.PhoneNumber);
 		}
 
 		// Override
