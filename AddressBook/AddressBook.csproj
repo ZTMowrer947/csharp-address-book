@@ -51,7 +51,9 @@
   <ItemGroup>
     <Compile Include="Exceptions\AddressBookException.cs" />
     <Compile Include="Exceptions\InputValidationException.cs" />
-    <Compile Include="Functions.cs" />
+    <Compile Include="Functions\JSONHandlingFunctions.cs" />
+    <Compile Include="Functions\MainFunctions.cs" />
+    <Compile Include="Functions\MenuFunctions.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\EmailAddress.cs" />
