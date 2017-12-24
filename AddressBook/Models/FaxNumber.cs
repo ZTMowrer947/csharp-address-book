@@ -39,11 +39,6 @@ namespace AddressBook.Models
 			return Number;
 		}
 
-		public override int GetHashCode()
-		{
-			return base.GetHashCode();
-		}
-
 		public override bool Equals(object obj)
 		{
 			if (obj == null || GetType() != obj.GetType()) {
