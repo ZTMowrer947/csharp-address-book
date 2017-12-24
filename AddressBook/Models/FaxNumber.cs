@@ -11,7 +11,6 @@ namespace AddressBook.Models
 		// Constructor
 		public FaxNumber(string number) : base(PhoneNumberType.Fax, number)
 		{
-			TypeOfPhoneNumber = PhoneNumberType.Fax;
 		}
 
 		/// <summary>
