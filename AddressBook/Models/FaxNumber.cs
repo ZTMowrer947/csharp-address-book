@@ -33,7 +33,7 @@ namespace AddressBook.Models
 			Number = MainFunctions.GetAndValidateInput("Fax Number", RegexPatterns.PhoneNumber);
 		}
 
-		// Override
+		// Overrides
 		public override string ToString()
 		{
 			return Number;
@@ -47,6 +47,11 @@ namespace AddressBook.Models
 				FaxNumber that = (FaxNumber)obj;
 				return base.Equals(that);
 			}
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
 		}
 	}
 }
