@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using AddressBook.Models;
 using AddressBook.Models.Enums;
+using System;
 
 namespace AddressBook.Tests.Models
 {
@@ -27,12 +28,18 @@ namespace AddressBook.Tests.Models
 		[Test()]
 		public void EmailValidityTest()
 		{
-			TestDelegate testDel = () =>
+			TestDelegate validFormatTest = () =>
 			{
 				MailAddress mailAddress = new MailAddress(emailAddress.Address);
 			};
 
-			Assert.DoesNotThrow(testDel);
+			TestDelegate nullStringTest = () =>
+			{
+				var mailAddress = new MailAddress("");
+			};
+
+			Assert.DoesNotThrow(validFormatTest);
+			Assert.Throws(typeof(ArgumentException), nullStringTest);
 		}
 
 		[Test()]

@@ -71,9 +71,19 @@ namespace AddressBook.Models
 			while (true) {
 				string emailAddressString = MainFunctions.ReadLine("Email Address: ");
 
-				try {
+				try
+				{
 					MailAddress mailAddress = new MailAddress(emailAddressString);
-				} catch (FormatException) {
+				} 
+				catch (FormatException)
+				{
+					Console.Write("Invalid email address. Press any key to retry...");
+					Console.ReadKey();
+					Console.Clear();
+					continue;
+				} 
+				catch (ArgumentException)
+				{
 					Console.Write("Invalid email address. Press any key to retry...");
 					Console.ReadKey();
 					Console.Clear();
