@@ -162,6 +162,13 @@ namespace AddressBook.Models
 						Console.Clear();
 						continue;
 					}
+					catch (ArgumentException)
+					{
+						Console.Write("Invalid email address. Press any key to retry...");
+						Console.ReadKey();
+						Console.Clear();
+						continue;
+					}
 
 					address = emailAddressString;
 					break;
