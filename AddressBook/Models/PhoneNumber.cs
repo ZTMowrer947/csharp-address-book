@@ -146,7 +146,7 @@ namespace AddressBook.Models
 					break;
 			}
 
-			string formatString = string.Format("{0}: {1}", typeOfPhoneNumberAsString, Number);
+			string formatString = $"{typeOfPhoneNumberAsString}: {Number}";
 
 			return formatString;
 		}

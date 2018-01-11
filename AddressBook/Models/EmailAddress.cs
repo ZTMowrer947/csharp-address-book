@@ -195,7 +195,7 @@ namespace AddressBook.Models
 					break;
 			}
 
-			string formatString = string.Format("{0}: {1}", typeOfEmailAddressAsString, Address);
+			string formatString = $"{typeOfEmailAddressAsString}: {Address}";
 
 			return formatString;
 		}

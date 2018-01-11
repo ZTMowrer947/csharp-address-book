@@ -178,13 +178,7 @@ namespace AddressBook.Models
 					break;
 			}
 
-			string formatString = string.Format("{0}: {1}, {2}, {3} {4}",
-				typeOfAddressAsString,
-				StreetAddress,
-				City,
-				State,
-				PostalCode
-			);
+			string formatString = $"{typeOfAddressAsString}: {StreetAddress}, {City}, {State} {PostalCode}";
 
 			return formatString;
 		}
